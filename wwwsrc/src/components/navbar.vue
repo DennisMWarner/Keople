@@ -1,7 +1,9 @@
 <template>
   <!-- //TODO figure out why navbar isn't functioning as expected w/responsive bootstrap class (navbar-expand-lg)-->
   <nav class="navbar navbar-expand navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">Keepr</router-link>
+    <router-link class="navbar-brand" :to="{ name: 'home' }">
+      <img src="../assets/Keople-logo-large.png" alt class />
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"

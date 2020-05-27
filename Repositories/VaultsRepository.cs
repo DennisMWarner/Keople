@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using Keepr.Models;
+using Dapper;
+
+namespace Keepr.Repositories
+{
+  public class VaultsRepository
+  {
+    private readonly IDbConnection _db;
+
+    public VaultsRepository(IDbConnection db)
+    {
+      _db = db;
+    }
+
+    internal IEnumerable<Vault> Get()
+    {
+      // WHERE isPrivate = 0
+      string sql = "SELECT * FROM vaults;";
+      return _db.Query<Vault>(sql);
+    }
+
+    internal Vault Create(Vault newVault)
+    {
+      string sql = @"
+            INSERT INTO vaults(name, description, userId)
+            VALUES(@Name, @Description, @UserId); 
+            SELECT LAST_INSERT_ID()
+        ";
+      newVault.Id = _db.ExecuteScalar<int>(sql, newVault);
+      return newVault;
+    }
+
+    internal bool Delete(int id)
+    {
+      string sql = @"
+     DELETE from vaults WHERE id =@Id";
+      int affectedRows = _db.Execute(sql, new { id });
+      return affectedRows == 1;
+    }
+  }
+}
