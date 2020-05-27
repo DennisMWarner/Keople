@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid keeps">
+  <div class="keeps">
     <div class="row">
       <div class="col-12">
         <div
@@ -19,7 +19,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content border border-secondary rounded shadow">
             <div class="modal-header bg-primary text-light border rounded shadow-sm border-light">
-              <h5 class="modal-title" id="exampleModalLabel">Create a new keop</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Create a new keep</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -62,7 +62,7 @@
             </div>
             <div class="modal-footer bg-secondary border border-light rounded shadow">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save Keop</button>
+              <button type="button" class="btn btn-primary">Save Keep</button>
             </div>
           </div>
         </div>

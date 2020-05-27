@@ -18,16 +18,23 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     publicKeeps: [],
-    userVaults: []
+    userVaults: [],
+    vaultKeeps: [],
+    activeKeep: {}
   },
   mutations: {
     setPublicKeeps(state, keeps) {
       state.publicKeeps = keeps;
+    },
 
+    setActiveKeep(state, activeKeep) {
+      state.activeKeep = activeKeep;
     },
     setUserVaults(state, vaults) {
       state.userVaults = vaults;
-
+    },
+    setVaultKeeps(state, vaultKeeps) {
+      state.vaultKeeps = vaultKeeps;
     }
   },
   actions: {
@@ -48,11 +55,42 @@ export default new Vuex.Store({
       }
     },
 
+    async getKeepById({ commit }, keepId) {
+      try {
+        console.log("getKeepById called ")
+        let res = await api.get("keeps/" + keepId)
+        commit("setActiveKeep", res.data)
+        console.log("result of getKeepById: ", res)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getVaultKeeps({ commit }, vaultId) {
+      try {
+        let res = await api.get("vaults/" + vaultId)
+        commit("setVaultKeeps", res.data);
+        console.log("result of getVaultKeeps: ", res)
+
+      } catch (error) {
+        console.error(error)
+      }
+
+    },
+
+
     async getUserVaults({ commit }, id) {
       try {
         let res = await api.get("vaults");
         commit("setUserVaults", res.data);
         console.log("result of getUserVaults: ", res)
+
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async saveKeepToVault({ }, payload) {
+      try {
+        let res = api.post("vaultkeeps", payload)
 
       } catch (error) {
         console.error(error)

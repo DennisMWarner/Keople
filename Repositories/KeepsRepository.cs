@@ -32,5 +32,11 @@ namespace Keepr.Repositories
       newKeep.Id = _db.ExecuteScalar<int>(sql, newKeep);
       return newKeep;
     }
+
+    internal Keep GetKeepById(int id)
+    {
+      string sql = "SELECT * FROM keeps WHERE id = @Id";
+      return _db.QueryFirstOrDefault<Keep>(sql, new { id });
+    }
   }
 }
