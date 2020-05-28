@@ -13,24 +13,18 @@ namespace Keepr.Services
     {
       _repo = repo;
     }
-    public IEnumerable<VaultKeep> Get()
-    {
-      return _repo.Get();
-    }
-
     public VaultKeep Create(VaultKeep newVaultKeep)
     {
       return _repo.Create(newVaultKeep);
     }
 
-    internal VaultKeep GetVaultKeepById(int id)
+    internal object Delete(int id)
     {
-      VaultKeep foundVaultKeep = _repo.GetVaultKeepById(id);
-      if (foundVaultKeep == null)
+      if (_repo.Delete(id))
       {
-        throw new Exception("Invalid VaultKeep Id");
+        return "Keep successfully removed from Vault.";
       }
-      return foundVaultKeep;
+      throw new Exception("Could not delete Keep.");
     }
   }
 }

@@ -20,31 +20,6 @@ namespace Keepr.Controllers
     {
       _vks = vks;
     }
-    [HttpGet]
-    public ActionResult<IEnumerable<VaultKeep>> Get()
-    {
-      try
-      {
-        return Ok(_vks.Get());
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      };
-    }
-
-    [HttpGet("{id}")]
-    public ActionResult<VaultKeep> GetKeepById(int id)
-    {
-      try
-      {
-        return Ok(_vks.GetVaultKeepById(id));
-      }
-      catch (Exception e)
-      {
-        return BadRequest(e.Message);
-      };
-    } 
 
     [HttpPost]
     [Authorize]
@@ -55,6 +30,20 @@ namespace Keepr.Controllers
         var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
         newVaultKeep.UserId = userId.Value;
         return Ok(_vks.Create(newVaultKeep));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize]
+    public ActionResult<string> Delete(int id)
+    {
+      try
+      {
+        return Ok(_vks.Delete(id));
       }
       catch (Exception e)
       {

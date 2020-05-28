@@ -11,7 +11,11 @@ export default {
   },
   computed: {},
   methods: {},
-  components: {}
+  components: {},
+  mounted() {
+    console.log("route: ", this.$route.params);
+    return this.$store.dispatch("getKeepsByVaultId", this.$route.params.id);
+  }
 };
 </script>
 

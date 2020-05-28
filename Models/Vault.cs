@@ -8,8 +8,6 @@ namespace Keepr.Models
     public string Description { get; set; }
 
   }
-  // public class VaultKeepViewModel : Keep
-  // {
-  //     public int VaultKeepId { get; set; }
-  // }
+
+
 }

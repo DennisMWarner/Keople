@@ -33,10 +33,7 @@ export default {
       this.$router.push("/vault/" + this.vaultData.id);
     }
   },
-  components: {},
-  mounted() {
-    return this.$store.dispatch("getVaultKeeps", this.vaultData.id);
-  }
+  components: {}
 };
 </script>
 

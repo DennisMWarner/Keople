@@ -32,5 +32,10 @@ namespace Keepr.Services
       }
       return foundKeep;
     }
+
+    internal object GetKeepsByVaultId(int id)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

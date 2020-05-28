@@ -36,10 +36,12 @@ namespace Keepr
       {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
       }).AddJwtBearer(options =>
       {
         options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
         options.Audience = Configuration["Auth0:Audience"];
+
       });
       services.AddCors(options =>
       {

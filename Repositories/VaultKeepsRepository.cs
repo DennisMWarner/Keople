@@ -15,13 +15,6 @@ namespace Keepr.Repositories
       _db = db;
     }
 
-    internal IEnumerable<VaultKeep> Get()
-    {
-      // WHERE isPrivate = 0
-      string sql = "SELECT * FROM vaultkeeps;";
-      return _db.Query<VaultKeep>(sql);
-    }
-
     internal VaultKeep Create(VaultKeep newVaultKeep)
     {
       string sql = @"
@@ -33,10 +26,12 @@ namespace Keepr.Repositories
       return newVaultKeep;
     }
 
-    internal VaultKeep GetVaultKeepById(int id)
+    internal bool Delete(int id)
     {
-      string sql = "SELECT * FROM vaultkeeps WHERE id = @Id";
-      return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
+      string sql = "DELETE FROM vaultkeeps WHERE id=@Id LIMIT 1";
+      int affectedRows = _db.Execute(sql, new { id });
+      return affectedRows == 1;
+
     }
   }
 }
