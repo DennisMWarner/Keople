@@ -13,9 +13,9 @@ namespace Keepr.Services
     {
       _repo = repo;
     }
-    public IEnumerable<Vault> Get()
+    public IEnumerable<Vault> Get(string id)
     {
-      return _repo.Get();
+      return _repo.Get(id);
     }
 
     public Vault Create(Vault newVault)
@@ -25,7 +25,6 @@ namespace Keepr.Services
 
     internal string Delete(int id)
     {
-      // Vault foundVault = GetById(id); 
       if (_repo.Delete(id))
       {
         return "Vault successfully removed.";

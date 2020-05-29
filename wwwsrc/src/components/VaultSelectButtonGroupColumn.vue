@@ -1,20 +1,22 @@
 <template>
-  <div class="vault-select-button-group">
+  <div class="vault-select-button-group-column">
     <div class="row">
-      <vault-select-button
+      <vault-save-keep-button
         v-for="vaultButton in vaultButtons"
         :vaultData="vaultButton"
         :key="vaultButton.id"
       />
     </div>
+    <create-vault />
   </div>
 </template>
 
 
 <script>
-import vaultSelectButton from "../components/VaultSelectButton.vue";
+import createVault from "../components/CreateVault.vue";
+import vaultSaveKeepButton from "../components/VaultSaveKeepButton.vue";
 export default {
-  name: "vault-select-button-group",
+  name: "vault-select-button-group-column",
   data() {
     return {};
   },
@@ -24,7 +26,7 @@ export default {
     }
   },
   methods: {},
-  components: { vaultSelectButton }
+  components: { vaultSaveKeepButton, createVault }
 };
 </script>
 

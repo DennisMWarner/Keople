@@ -1,9 +1,14 @@
 <template>
-  <div class="vault-details">Display all of the keeps for a vault here....</div>
+  <div class="vault-details">
+    <create-keep />
+    <vault-keeps />
+  </div>
 </template>
 
 
 <script>
+import vaultKeeps from "../components/VaultKeeps";
+import createKeep from "../components/CreateKeep";
 export default {
   name: "vault-details",
   data() {
@@ -11,9 +16,11 @@ export default {
   },
   computed: {},
   methods: {},
-  components: {},
+  components: { vaultKeeps, createKeep },
   mounted() {
     console.log("route: ", this.$route.params);
+    //clear vaultKeeps from store to prevent render before data is updated
+    this.$store.state.vaultKeeps = [];
     return this.$store.dispatch("getKeepsByVaultId", this.$route.params.id);
   }
 };

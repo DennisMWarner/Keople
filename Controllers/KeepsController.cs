@@ -45,13 +45,27 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       };
     }
-
-    [HttpGet("/vault/{id}")]
-    public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeepsByVaultId(int id)
+    [HttpGet("user")]
+    public ActionResult<IEnumerable<Keep>> GetuserKeeps()
     {
       try
       {
-        return Ok(_ks.GetKeepsByVaultId(id));
+        var userClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        var userId = userClaim.Value;
+        return Ok(_ks.GetUserKeeps(userId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      };
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<Keep> EditKeep([FromBody] Keep newKeep)
+    {
+      try
+      {
+        return Ok(_ks.EditKeep(newKeep));
       }
       catch (Exception e)
       {

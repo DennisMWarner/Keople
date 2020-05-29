@@ -1,10 +1,6 @@
-<template>
-  <div class="vaults">
-    <div class="row">
-      <div class>
-        <vault v-for="vault in vaults" :vaultData="vault" :key="vault.id"></vault>
-      </div>
-    </div>
+<template class="container-fluid">
+  <div class="vaults row">
+    <vault v-for="vault in vaults" :vaultData="vault" :key="vault.id"></vault>
   </div>
 </template>
 

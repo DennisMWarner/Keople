@@ -1,8 +1,6 @@
 <template>
-  <div class="vault-select-button w-100">
-    <div class="col-12">
-      <button class="btn btn-warning w-100 m-1" @click="saveKeepToVault()">{{vaultData.name}}</button>
-    </div>
+  <div class="vault-select-button">
+    <button class="btn btn-warning btn-block" @click="displayVaultDetailsPage()">{{vaultData.name}}</button>
   </div>
 </template>
 
@@ -16,13 +14,8 @@ export default {
   props: ["vaultData"],
   computed: {},
   methods: {
-    saveKeepToVault() {
-      let payload = {};
-      payload.vaultId = this.vaultData.id;
-      payload.keepId = this.$store.state.activeKeep.id;
-
-      this.$store.dispatch("saveKeepToVault", payload);
-      console.log("payload: ", payload);
+    displayVaultDetailsPage() {
+      this.$router.push("/vault/" + this.vaultData.id);
     }
   },
   components: {}

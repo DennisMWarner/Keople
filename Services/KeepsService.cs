@@ -33,9 +33,24 @@ namespace Keepr.Services
       return foundKeep;
     }
 
-    internal object GetKeepsByVaultId(int id)
+    internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int vaultId, string userId)
     {
-      throw new NotImplementedException();
+      return _repo.GetKeepsByVaultId(vaultId, userId);
+    }
+
+    internal object EditKeep(Keep keepToUpdate)
+    {
+      Keep updatedKeep = _repo.EditKeep(keepToUpdate);
+      if (updatedKeep == null)
+      {
+        throw new Exception("Keep Not Found");
+      }
+      return updatedKeep;
+    }
+
+    internal object GetUserKeeps(string userId)
+    {
+      return _repo.GetUserKeeps(userId);
     }
   }
 }

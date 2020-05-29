@@ -31,9 +31,9 @@
             <li
               class="nav-item"
               v-if="$auth.isAuthenticated"
-              :class="{ active: $route.name == 'dashboard' }"
+              :class="{ active: $route.name == 'userKeepsPage' }"
             >
-              <router-link class="nav-link" :to="{ name: 'dashboard' }">My-Dashboard</router-link>
+              <router-link class="nav-link" :to="{ name: 'userKeepsPage' }">My Keeps</router-link>
             </li>
           </ul>
           <span class="navbar-text py-2">
@@ -69,6 +69,7 @@ export default {
       this.$store.dispatch("setBearer", this.$auth.bearer);
       console.log("this.$auth.user: ");
       console.log(this.$auth.user);
+      this.$store.dispatch("getUserVaults", this.$auth.email);
     },
     async logout() {
       this.$store.dispatch("resetBearer");

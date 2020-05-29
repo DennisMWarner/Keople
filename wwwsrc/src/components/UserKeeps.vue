@@ -1,7 +1,7 @@
 <template class="container-fluid">
-  <div class="keeps row">
+  <div class="user-keeps row">
     <div class>
-      <keep v-for="keep in keeps" :keepData="keep" :key="keep.id"></keep>
+      <keep v-for="keep in userKeeps" :keepData="keep" :key="keep.id"></keep>
     </div>
   </div>
 </template>
@@ -10,13 +10,13 @@
 <script>
 import keep from "./Keep.vue";
 export default {
-  name: "Keeps",
+  name: "user-keeps",
   data() {
     return {};
   },
   computed: {
-    keeps() {
-      return this.$store.state.publicKeeps;
+    userKeeps() {
+      return this.$store.state.userKeeps;
     }
   },
   methods: {},

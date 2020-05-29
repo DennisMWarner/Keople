@@ -1,18 +1,6 @@
 <template>
-  <div class="vault col-6" @click="displayVaultDetailsPage()">
-    <div class="row border rounded bg-secondary shadow p-3 m-auto">
-      <div class="col-12">{{vaultData.name}}</div>
-
-      <div class="col-12">{{vaultData.description}}</div>
-
-      <div class="col-12">{{vaultData.userId}}</div>
-      <div class="col-12">
-        <button
-          class="btn btn-block btn-warning p-2 border-white rounded shadow"
-          @click="deleteVault()"
-        >DELETE</button>
-      </div>
-    </div>
+  <div class="vault col-3" @click="displayVaultDetailsPage()">
+    <div>{{vaultData.name}}</div>
   </div>
 </template>
 
@@ -26,9 +14,10 @@ export default {
   props: ["vaultData"],
   computed: {},
   methods: {
-    deleteVault() {
-      this.$store.dispatch("deleteVault", this.vaultData.id);
-    },
+    //NOTE move deleteVault() to VaultDetails.vue
+    // deleteVault() {
+    //   this.$store.dispatch("deleteVault", this.vaultData.id);
+    // },
     displayVaultDetailsPage() {
       this.$router.push("/vault/" + this.vaultData.id);
     }

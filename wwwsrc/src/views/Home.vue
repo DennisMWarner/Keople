@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <h3>Welcome Home</h3>
-    <vaults />
+  <div class="home mt-2">
+    <vault-select-button-group-row />
     <keeps />
   </div>
 </template>
@@ -9,6 +8,7 @@
 <script>
 import vaults from "../components/Vaults.vue";
 import keeps from "../components/Keeps.vue";
+import vaultSelectButtonGroupRow from "../components/VaultSelectButtonGroupRow";
 export default {
   name: "home",
   computed: {
@@ -16,7 +16,7 @@ export default {
       return this.$store.state.user;
     }
   },
-  components: { keeps, vaults },
+  components: { keeps, vaults, vaultSelectButtonGroupRow },
   methods: {
     logout() {
       this.$store.dispatch("logout");
