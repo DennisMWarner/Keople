@@ -2,8 +2,8 @@
   <!-- //TODO figure out why navbar isn't functioning as expected w/responsive bootstrap class (navbar-expand-lg)-->
   <div class="row">
     <div class="col-12">
-      <nav class="navbar navbar-expand navbar-light bg-light row p-0">
-        <router-link class="navbar-brand col-2" :to="{ name: 'home' }">
+      <nav class="navbar navbar-expand navbar-light bg-primary row p-0 m-auto">
+        <router-link class="navbar-brand col-2 ml-2" :to="{ name: 'home' }">
           <img
             src="../assets/Keople-logo-large.png"
             class="img-fluid border rounded border-dark bg-white shadow p-1"
@@ -37,11 +37,15 @@
             </li>
           </ul>
           <span class="navbar-text py-2">
+            <span
+              v-if="$auth.isAuthenticated"
+              class="bg-primary border border-dark text-light rounded shadow px-1 pb-2 pt-1"
+            >{{userInfo.user.name}}</span>
             <button
               class="btn btn-sm btn-primary border border-secondary rounded shadow p-1 mx-3"
               @click="login"
               v-if="!$auth.isAuthenticated"
-            >Login</button>
+            >Login or Register</button>
             <button
               class="btn btn-sm btn-warning border-secondary rounded shadow p-1 mx-3"
               @click="logout"
@@ -74,6 +78,11 @@ export default {
     async logout() {
       this.$store.dispatch("resetBearer");
       await this.$auth.logout({ returnTo: window.location.origin });
+    }
+  },
+  computed: {
+    userInfo() {
+      return this.$auth;
     }
   }
 };

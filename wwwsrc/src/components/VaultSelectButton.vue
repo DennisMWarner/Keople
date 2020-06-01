@@ -15,6 +15,11 @@ export default {
   computed: {},
   methods: {
     displayVaultDetailsPage() {
+      console.log(
+        "this.vaultData.id at displayVaultDetailsPage: ",
+        this.vaultData.id
+      );
+      this.$store.dispatch("getVaultById", this.vaultData.id);
       this.$router.push("/vault/" + this.vaultData.id);
     }
   },

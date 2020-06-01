@@ -1,5 +1,5 @@
 <template>
-  <div id="app container-fluid">
+  <div id="app container-fluid full-background">
     <navbar />
     <router-view />
   </div>
@@ -24,4 +24,8 @@ export default {
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";
+.full-background {
+  min-width: 100vw;
+  max-width: 100vw;
+}
 </style>

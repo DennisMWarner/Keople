@@ -71,7 +71,22 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       };
     }
+
+    [HttpGet("{id}")]
+    [Authorize]
+    public ActionResult<Vault> GetVaultById(int id)
+    {
+      try
+      {
+        return Ok(_vs.GetVaultById(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      };
+    }
     [HttpDelete("{id}")]
+    [Authorize]
     public ActionResult<string> Delete(int id)
     {
       try

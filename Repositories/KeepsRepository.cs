@@ -18,15 +18,15 @@ namespace Keepr.Repositories
     internal IEnumerable<Keep> Get()
     {
       // WHERE isPrivate = 0
-      string sql = "SELECT * FROM keeps;";
+      string sql = "SELECT * FROM keeps WHERE isPrivate = 0";
       return _db.Query<Keep>(sql);
     }
 
     internal Keep Create(Keep newKeep)
     {
       string sql = @"
-            INSERT INTO keeps(name, description, userId, img, views, shares, keeps)
-            VALUES(@Name, @Description, @UserId, @Img, @Views, @Shares, @Keeps); 
+            INSERT INTO keeps(name, description, userId, img, views, shares, keeps, isPrivate)
+            VALUES(@Name, @Description, @UserId, @Img, @Views, @Shares, @Keeps, @IsPrivate); 
             SELECT LAST_INSERT_ID()
         ";
       newKeep.Id = _db.ExecuteScalar<int>(sql, newKeep);
@@ -51,6 +51,16 @@ WHERE (vaultId = @VaultId AND vk.userId = @UserId)
       string sql = "SELECT * FROM keeps WHERE userId = @UserId";
       return _db.Query<Keep>(sql, new { userId });
 
+    }
+
+    internal bool Delete(int id, string userId)
+    {
+      {
+        string sql = @"
+     DELETE FROM keeps WHERE(id =@Id AND userId = @UserId) LIMIT 1";
+        int affectedRows = _db.Execute(sql, new { id, userId });
+        return affectedRows == 1;
+      }
     }
 
     internal Keep EditKeep(Keep keepToUpdate)

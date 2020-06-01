@@ -38,7 +38,7 @@ namespace Keepr.Services
       return _repo.GetKeepsByVaultId(vaultId, userId);
     }
 
-    internal object EditKeep(Keep keepToUpdate)
+    internal Keep EditKeep(Keep keepToUpdate)
     {
       Keep updatedKeep = _repo.EditKeep(keepToUpdate);
       if (updatedKeep == null)
@@ -48,9 +48,19 @@ namespace Keepr.Services
       return updatedKeep;
     }
 
-    internal object GetUserKeeps(string userId)
+    internal IEnumerable<Keep> GetUserKeeps(string userId)
     {
       return _repo.GetUserKeeps(userId);
     }
+
+    internal string Delete(int id, string userId)
+    {
+      if (_repo.Delete(id, userId))
+      {
+        return "Keep successfully removed.";
+      }
+      throw new Exception("Could not delete keep");
+    }
+
   }
 }

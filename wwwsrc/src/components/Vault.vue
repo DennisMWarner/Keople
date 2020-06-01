@@ -14,11 +14,12 @@ export default {
   props: ["vaultData"],
   computed: {},
   methods: {
-    //NOTE move deleteVault() to VaultDetails.vue
-    // deleteVault() {
-    //   this.$store.dispatch("deleteVault", this.vaultData.id);
-    // },
     displayVaultDetailsPage() {
+      console.log(
+        "vaultData.id at displayVaultDetailsPage:",
+        this.vaultData.id
+      );
+      this.$store.dispatch("getVaultById", this.vaultData.id);
       this.$router.push("/vault/" + this.vaultData.id);
     }
   },

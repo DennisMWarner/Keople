@@ -1,5 +1,5 @@
 <template>
-  <div class="vault-select-button-group-row">
+  <div class="vault-select-button-group-row" @click="displayVaultDetailsPage()">
     <div class="row">
       <vault-select-button
         v-for="vaultButton in vaultButtons"
@@ -26,10 +26,14 @@ export default {
   },
   methods: {
     displayVaultDetailsPage() {
+      console.log("vaultdata.id at diplayVaultDetailsPage:", this.vaultData.id);
       this.$router.push("/vault/" + this.vaultData.id);
     }
   },
-  components: { vaultSelectButton }
+  components: { vaultSelectButton },
+  created() {
+    return this.$store.dispatch("getUserVaults");
+  }
 };
 </script>
 

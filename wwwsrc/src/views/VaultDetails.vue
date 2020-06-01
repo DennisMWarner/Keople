@@ -2,6 +2,12 @@
   <div class="vault-details">
     <create-keep />
     <vault-keeps />
+    <div class="col-12 text-center mt-1">
+      <button
+        class="btn btn-light rounded border border-primary text-white shadow w-50 bg-danger"
+        @click="deleteVault()"
+      >Delete this vault</button>
+    </div>
   </div>
 </template>
 
@@ -14,8 +20,20 @@ export default {
   data() {
     return {};
   },
-  computed: {},
-  methods: {},
+  computed: {
+    vault() {
+      return this.$store.state.activeVault;
+    }
+  },
+  methods: {
+    deleteVault() {
+      console.log(
+        "deleteVault called, this.vault.id:",
+        this.$store.state.activeVault.id
+      );
+      this.$store.dispatch("deleteVault", this.vault.id);
+    }
+  },
   components: { vaultKeeps, createKeep },
   mounted() {
     console.log("route: ", this.$route.params);

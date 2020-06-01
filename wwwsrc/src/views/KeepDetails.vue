@@ -1,19 +1,29 @@
 <template>
   <div class="keep-details">
     <div class="row">
-      <div class="col-12 bg-secondary p-0">
+      <div class="col-12 bg-secondary mt-1 p-0">
         <img :src="keep.img" class="img-fluid border rounded shadow border-dark p-3" />
       </div>
     </div>
+
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 text-center mt-1">
         <button
-          class="btn btn-light rounded border shadow w-100"
+          class="btn btn-success rounded border shadow w-50"
           data-target="#saveKeepModal"
           data-toggle="modal"
         >Keep</button>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 text-center mt-1">
+        <button
+          class="btn btn-light rounded border shadow w-50 bg-danger"
+          @click="deleteKeep()"
+        >Delete</button>
+      </div>
+    </div>
+
     <div
       class="modal fade"
       id="saveKeepModal"
@@ -62,7 +72,11 @@ export default {
       return this.$store.state.activeKeep;
     }
   },
-  methods: {},
+  methods: {
+    deleteKeep() {
+      return this.$store.dispatch("deleteKeep", this.keep.id);
+    }
+  },
   components: { keep, vaultSelectButtonGroupColumn },
   mounted() {
     return this.$store.dispatch("getKeepById", this.$route.params.id);

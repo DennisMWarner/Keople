@@ -21,7 +21,8 @@ export default new Vuex.Store({
     userKeeps: [],
     userVaults: [],
     vaultKeeps: [],
-    activeKeep: {}
+    activeKeep: {},
+    activeVault: {}
   },
   mutations: {
     setPublicKeeps(state, keeps) {
@@ -36,6 +37,10 @@ export default new Vuex.Store({
     },
     setUserVaults(state, vaults) {
       state.userVaults = vaults;
+    },
+
+    setActiveVault(state, activeVault) {
+      state.activeVault = activeVault;
     },
     setVaultKeeps(state, vaultKeeps) {
       state.vaultKeeps = vaultKeeps;
@@ -114,6 +119,19 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async getVaultById({ commit }, vaultId) {
+      try {
+        console.log("getVaultById called ")
+        let res = await api.get("vaults/" + vaultId)
+        commit("setActiveVault", res.data)
+        console.log("result of getVaultById: ", res)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+
     async saveKeepToVault({ }, payload) {
       console.log("saveKeepToVault called... ", payload)
       try {
@@ -124,10 +142,33 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async createVault({ dispatch }, payload) {
+      try {
+        console.log("new vault sent:", payload.newVault)
+        let res = await api.post("vaults", payload.newVault)
+        let saveKeepToVaultPayload = {};
+        saveKeepToVaultPayload.vaultId = res.data.id;
+        saveKeepToVaultPayload.keepId = payload.keepId;
+        dispatch("saveKeepToVault", saveKeepToVaultPayload)
+        console.log("new vault returned:", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async deleteVault({ dispatch }, id) {
       try {
         await api.delete("vaults/" + id);
         dispatch("getUserVaults");
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteKeep({ dispatch }, id) {
+      try {
+        await api.delete("keeps/" + id);
+        dispatch("getUserKeeps");
       } catch (error) {
         console.error(error)
       }

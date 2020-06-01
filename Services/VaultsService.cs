@@ -31,5 +31,15 @@ namespace Keepr.Services
       }
       throw new Exception("Could not delete vault");
     }
+
+    internal Vault GetVaultById(int id)
+    {
+      Vault foundVault = _repo.GetVaultById(id);
+      if (foundVault == null)
+      {
+        throw new Exception("Invalid Vault Id");
+      }
+      return foundVault;
+    }
   }
 }
