@@ -1,7 +1,7 @@
 <template>
   <div class="create-keep">
     <div
-      class="btn border border-white btn-block text-white bg-dark btn-rounded shadow p-3 m-3"
+      class="btn border border-white btn-block text-white bg-dark btn-rounded shadow p-3"
       data-target="#create-keep-modal"
       data-toggle="modal"
     >Create a new keep</div>
