@@ -59,5 +59,9 @@ namespace Keepr.Services
       throw new Exception("Could not delete keep");
     }
 
+    internal IEnumerable<Keep> GetUserKeeps(string userId)
+    {
+      return _repo.GetUserKeeps(userId);
+    }
   }
 }

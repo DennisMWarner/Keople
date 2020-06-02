@@ -74,6 +74,15 @@ export default new Vuex.Store({
       }
     },
 
+    async saveUserKeep({ dispatch }, keepToUpdate) {
+      try {
+        let res = await api.put("keeps/user", keepToUpdate)
+        dispatch("getUserKeeps")
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     async getKeepById({ commit }, keepId) {
       try {
         console.log("getKeepById called ")

@@ -68,10 +68,8 @@ WHERE (vaultId = @VaultId AND vk.userId = @UserId)
       {
         string sql = @"
             UPDATE keeps
-            SET
-           
-            views = keepToUpdate.views
-            WHERE id = keepToUpdate.id
+            SET(keeps = @keeps
+            WHERE id = @id
           ";
         return _db.QueryFirstOrDefault<Keep>(
           sql,

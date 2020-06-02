@@ -12,12 +12,13 @@
           class="btn btn-success rounded border shadow w-50"
           data-target="#save-keep-modal"
           data-toggle="modal"
+          @click="saveUserKeep()"
         >Keep</button>
       </div>
     </div>
     <div
       class="row"
-      v-if="this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
+      v-if="this.$store.state.activeKeep.isPrivate && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
     >
       <div class="col-12 text-center mt-1">
         <button
@@ -68,7 +69,9 @@ import vaultSelectButtonGroupColumn from "../components/VaultSelectButtonGroupCo
 export default {
   name: "keep-details",
   data() {
-    return {};
+    return {
+      updatedKeep: {}
+    };
   },
   computed: {
     keep() {
@@ -78,11 +81,19 @@ export default {
   methods: {
     deleteKeep() {
       return this.$store.dispatch("deleteKeep", this.keep.id);
+    },
+    saveUserKeep() {
+      updatedKeep.keeps = ++this.keep.keeps;
+      updatedKeep.id = this.keep.id;
+      return this.$store.dispatch("saveUserKeep", updatedKeep);
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },
   mounted() {
     return this.$store.dispatch("getKeepById", this.$route.params.id);
+  },
+  destroyed() {
+    return (this.$store.activeKeep = {});
   }
 };
 </script>
