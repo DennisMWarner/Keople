@@ -1,5 +1,5 @@
-<template class="container-fluid">
-  <div class="keeps row">
+<template>
+  <div class="keeps">
     <div class>
       <keep v-for="keep in keeps" :keepData="keep" :key="keep.id"></keep>
     </div>

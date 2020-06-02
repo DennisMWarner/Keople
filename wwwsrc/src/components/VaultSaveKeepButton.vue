@@ -1,7 +1,7 @@
 <template>
-  <div class="vault-save-keep-button col-12">
+  <div class="vault-save-keep-button mx-auto">
     <button
-      class="btn btn-warning w-100"
+      class="btn btn-warning w-100 mb-2"
       @click="saveKeepToVault()"
       data-dismiss="modal"
     >{{vaultData.name}}</button>

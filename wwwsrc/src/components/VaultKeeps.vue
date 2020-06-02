@@ -1,9 +1,7 @@
 <template>
   <div class="vault-keeps">
-    <div class="row">
-      <div class>
-        <keep v-for="vaultKeep in vaultKeeps" :keepData="vaultKeep" :key="vaultKeep.id"></keep>
-      </div>
+    <div class>
+      <keep v-for="vaultKeep in vaultKeeps" :keepData="vaultKeep" :key="vaultKeep.id"></keep>
     </div>
   </div>
 </template>

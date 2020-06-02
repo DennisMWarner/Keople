@@ -1,10 +1,10 @@
 <template>
-  <div class="home row mt-2">
+  <div class="home mt-2">
     <vault-select-button-group-row />
-    <create-keep v-if="this.$auth.isAuthenticated" class="col-10 mx-auto" />
+    <create-keep v-if="this.$auth.isAuthenticated" class="mx-auto" />
     <div
       v-else
-      class="col-10 text-center border border-dark shadow rounded p-2 mx-auto"
+      class="text-center border border-dark shadow rounded p-2"
     >Please log in or register to create keeps and vaults</div>
     <keeps />
   </div>

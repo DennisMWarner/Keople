@@ -1,13 +1,10 @@
 <template>
   <div class="vault-select-button-group-row" @click="displayVaultDetailsPage()">
-    <div class="row">
-      <vault-select-button
-        v-for="vaultButton in vaultButtons"
-        :vaultData="vaultButton"
-        :key="vaultButton.id"
-        class="col-3"
-      />
-    </div>
+    <vault-select-button
+      v-for="vaultButton in vaultButtons"
+      :vaultData="vaultButton"
+      :key="vaultButton.id"
+    />
   </div>
 </template>
 

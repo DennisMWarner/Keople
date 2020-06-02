@@ -1,12 +1,11 @@
 <template>
   <div class="vault-select-button-group-column">
-    <div class="row">
-      <vault-save-keep-button
-        v-for="vaultButton in vaultButtons"
-        :vaultData="vaultButton"
-        :key="vaultButton.id"
-      />
-    </div>
+    <vault-save-keep-button
+      v-for="vaultButton in vaultButtons"
+      :vaultData="vaultButton"
+      :key="vaultButton.id"
+    />
+
     <create-vault />
   </div>
 </template>

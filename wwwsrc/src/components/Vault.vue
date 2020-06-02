@@ -1,5 +1,5 @@
 <template>
-  <div class="vault col-3" @click="displayVaultDetailsPage()">
+  <div class="vault" @click="displayVaultDetailsPage()">
     <div>{{vaultData.name}}</div>
   </div>
 </template>

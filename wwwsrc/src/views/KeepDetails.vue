@@ -1,13 +1,11 @@
 <template>
   <div class="keep-details">
-    <div class="row">
-      <div class="col-12 bg-secondary mt-1 p-0">
-        <img :src="keep.img" class="img-fluid border rounded shadow border-dark p-3" />
-      </div>
+    <div class="bg-warning mt-1 p-0">
+      <img :src="keep.img" class="img-fluid border rounded shadow border-dark p-3" />
     </div>
 
-    <div class="row" v-if="this.$auth.user">
-      <div class="col-12 text-center mt-1">
+    <div v-if="this.$auth.user">
+      <div class="text-center mt-1">
         <button
           class="btn btn-success rounded border shadow w-50"
           data-target="#save-keep-modal"
@@ -17,10 +15,9 @@
       </div>
     </div>
     <div
-      class="row"
       v-if="this.$store.state.activeKeep.isPrivate && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
     >
-      <div class="col-12 text-center mt-1">
+      <div class="text-center mt-1">
         <button
           class="btn btn-light rounded border shadow w-50 bg-danger"
           @click="deleteKeep()"
@@ -47,13 +44,13 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="modal-body text-center">
+            <div class="btn-group text-center" role="group" aria-label="Basic example">
               <vault-select-button-group-column />
             </div>
           </div>
           <div class="modal-footer bg-secondary border border-light rounded shadow">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <!-- <button type="button" class="btn btn-primary">Save Keep</button> -->
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="user-keeps-page mt-2">
-    <create-keep class="col-11" />
+    <create-keep />
     <userKeeps />
   </div>
 </template>

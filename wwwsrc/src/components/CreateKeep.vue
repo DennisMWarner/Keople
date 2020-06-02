@@ -2,13 +2,13 @@
   <div class="create-keep">
     <div
       class="btn border border-white btn-block text-white bg-dark btn-rounded shadow p-3 m-3"
-      data-target="#createKeepModal"
+      data-target="#create-keep-modal"
       data-toggle="modal"
     >Create a new keep</div>
 
     <div
       class="modal fade"
-      id="createKeepModal"
+      id="create-keep-modal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"

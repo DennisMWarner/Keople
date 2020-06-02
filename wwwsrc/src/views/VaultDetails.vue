@@ -2,7 +2,7 @@
   <div class="vault-details">
     <create-keep />
     <vault-keeps />
-    <div class="col-12 text-center mt-1">
+    <div class="text-center mt-1">
       <button
         class="btn btn-light rounded border border-primary text-white shadow w-50 bg-danger"
         @click="deleteVault()"
