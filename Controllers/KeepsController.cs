@@ -46,7 +46,6 @@ namespace Keepr.Controllers
       };
     }
     [HttpGet("user")]
-    [Authorize]
     public ActionResult<IEnumerable<Keep>> GetuserKeeps()
     {
       try

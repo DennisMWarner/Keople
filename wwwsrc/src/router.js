@@ -37,14 +37,14 @@ export default new Router({
       path: "/myKeeps",
       name: "userKeepsPage",
       component: UserKeepsPage,
-      // beforeEnter: authGuard
+      beforeEnter: authGuard
     },
 
     {
       path: "/keep/:id",
       name: "keep",
       component: KeepDetails,
-      // beforeEnter: authGuard
+      //beforeEnter: authGuard
     }
   ]
 

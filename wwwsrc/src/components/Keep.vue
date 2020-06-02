@@ -26,8 +26,9 @@ export default {
   computed: {},
   methods: {
     displayKeepDetailsPage() {
+      console.log("this.auth.user: ", this.$auth.user);
       this.keepData.views += 1;
-      this.$store.dispatch("editKeep", this.keepData);
+      // this.$store.dispatch("editKeep", this.keepData);
       this.$router.push("/keep/" + this.keepData.id);
     }
   },

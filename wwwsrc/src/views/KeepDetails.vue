@@ -6,16 +6,19 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" v-if="this.$auth.user">
       <div class="col-12 text-center mt-1">
         <button
           class="btn btn-success rounded border shadow w-50"
-          data-target="#saveKeepModal"
+          data-target="#save-keep-modal"
           data-toggle="modal"
         >Keep</button>
       </div>
     </div>
-    <div class="row">
+    <div
+      class="row"
+      v-if="this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
+    >
       <div class="col-12 text-center mt-1">
         <button
           class="btn btn-light rounded border shadow w-50 bg-danger"
@@ -26,7 +29,7 @@
 
     <div
       class="modal fade"
-      id="saveKeepModal"
+      id="save-keep-modal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -50,7 +53,7 @@
           </div>
           <div class="modal-footer bg-secondary border border-light rounded shadow">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save Keep</button>
+            <!-- <button type="button" class="btn btn-primary">Save Keep</button> -->
           </div>
         </div>
       </div>

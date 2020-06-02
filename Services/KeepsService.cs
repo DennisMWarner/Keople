@@ -48,10 +48,7 @@ namespace Keepr.Services
       return updatedKeep;
     }
 
-    internal IEnumerable<Keep> GetUserKeeps(string userId)
-    {
-      return _repo.GetUserKeeps(userId);
-    }
+
 
     internal string Delete(int id, string userId)
     {

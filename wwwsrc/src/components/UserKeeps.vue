@@ -20,6 +20,9 @@ export default {
     }
   },
   methods: {},
+  created() {
+    return this.$store.dispatch("getUserKeeps");
+  },
   components: { keep }
 };
 </script>
