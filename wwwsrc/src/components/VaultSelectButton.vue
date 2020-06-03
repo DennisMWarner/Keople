@@ -1,6 +1,9 @@
 <template>
-  <div class="vault-select-button">
-    <button class="btn btn-warning btn-block" @click="displayVaultDetailsPage()">{{vaultData.name}}</button>
+  <div class="vault-select-button col-sm-3 mt-0 mb-2">
+    <button
+      class="btn btn-warning btn-sm border border-white btn-block text-white"
+      @click="displayVaultDetailsPage()"
+    >{{vaultData.name}}</button>
   </div>
 </template>
 

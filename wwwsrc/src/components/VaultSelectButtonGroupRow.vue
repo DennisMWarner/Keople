@@ -1,5 +1,8 @@
 <template>
-  <div class="vault-select-button-group-row" @click="displayVaultDetailsPage()">
+  <div
+    class="vault-select-button-group-row row justify-content-around bg-primary"
+    @click="displayVaultDetailsPage()"
+  >
     <vault-select-button
       v-for="vaultButton in vaultButtons"
       :vaultData="vaultButton"

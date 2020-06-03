@@ -1,5 +1,5 @@
 <template>
-  <div class="user-keeps-page mt-2">
+  <div class="user-keeps-page bg-primary">
     <create-keep />
     <userKeeps />
   </div>

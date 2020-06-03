@@ -1,15 +1,15 @@
 <template class="row">
   <!-- //TODO figure out why navbar isn't functioning as expected w/responsive bootstrap class (navbar-expand-lg)-->
   <div class="col-12 p-0">
-    <nav class="navbar navbar-expand-sm navbar-light bg-primary row">
-      <router-link class="navbar-brand col-3" :to="{ name: 'home' }">
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary row py-0">
+      <router-link class="navbar-brand col-sm-3" :to="{ name: 'home' }">
         <img
           src="../assets/Keople-logo-large.png"
-          class="img-fluid border rounded border-dark shadow p-1"
+          class="img-fluid bg-white border rounded border-warning shadow p-1"
         />
       </router-link>
       <button
-        class="navbar-toggler bg-warning"
+        class="navbar-toggler bg-white"
         type="button"
         data-toggle="collapse"
         data-target="#navbarText"
@@ -20,7 +20,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        class="collapse navbar-collapse img-fluid border rounded border-dark bg-white shadow py-1 m-2 mr-3 justify-content-between"
+        class="collapse navbar-collapse img-fluid border rounded border-dark bg-white shadow p-0 m-2 mr-3 justify-content-between"
         id="navbarText"
       >
         <span>

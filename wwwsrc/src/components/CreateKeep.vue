@@ -1,10 +1,10 @@
 <template>
-  <div class="create-keep">
-    <div
-      class="btn border border-white btn-block text-white bg-dark btn-rounded shadow p-3"
+  <div class="create-keep row bg-primary justify-content-around">
+    <button
+      class="btn btn-sm border border-white btn-block text-white bg-dark btn-rounded shadow p-1 col-8 mt-1"
       data-target="#create-keep-modal"
       data-toggle="modal"
-    >Create a new keep</div>
+    >Create a new keep</button>
 
     <div
       class="modal fade"

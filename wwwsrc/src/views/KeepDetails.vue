@@ -15,7 +15,7 @@
       </div>
     </div>
     <div
-      v-if="this.$store.state.activeKeep.isPrivate && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
+      v-if="this.$store.state.activeKeep.isPrivate  && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
     >
       <div class="text-center mt-1">
         <button

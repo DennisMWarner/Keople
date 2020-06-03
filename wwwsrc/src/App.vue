@@ -1,5 +1,5 @@
 <template>
-  <div id="app  full-background container-fluid">
+  <div id="app  full-background bg-primary container-fluid">
     <navbar />
     <router-view />
   </div>

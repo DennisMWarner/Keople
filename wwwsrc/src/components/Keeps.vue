@@ -1,5 +1,5 @@
 <template>
-  <div class="keeps">
+  <div class="keeps row">
     <div class>
       <keep v-for="keep in keeps" :keepData="keep" :key="keep.id"></keep>
     </div>
