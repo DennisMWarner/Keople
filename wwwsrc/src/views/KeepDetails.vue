@@ -1,13 +1,13 @@
 <template>
-  <div class="keep-details">
-    <div class="bg-warning mt-1 p-0">
-      <img :src="keep.img" class="img-fluid border rounded shadow border-dark p-3" />
+  <div class="keep-details bg-primary">
+    <div class="bg-primary p-0">
+      <img :src="keep.img" class="img-fluid border rounded shadow border-warning p-1" />
     </div>
 
     <div v-if="this.$auth.user">
       <div class="text-center mt-1">
         <button
-          class="btn btn-success rounded border shadow w-50"
+          class="btn btn-success text-white rounded border shadow w-50"
           data-target="#save-keep-modal"
           data-toggle="modal"
           @click="saveUserKeep()"
@@ -19,7 +19,7 @@
     >
       <div class="text-center mt-1">
         <button
-          class="btn btn-light rounded border shadow w-50 bg-danger"
+          class="btn btn-light text-white rounded border shadow w-50 bg-danger"
           @click="deleteKeep()"
         >Delete</button>
       </div>
@@ -56,6 +56,14 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <button
+          class="btn btn-block border btn-danger text-white rounded m-3"
+          @click="getKeepVaultInfo()"
+        >Test</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -83,6 +91,17 @@ export default {
       updatedKeep.keeps = ++this.keep.keeps;
       updatedKeep.id = this.keep.id;
       return this.$store.dispatch("saveUserKeep", updatedKeep);
+    },
+
+    getKeepVaultInfo() {
+      let foundKeep = this.$store.state.vaultKeeps.indexOf(
+        this.$store.state.activeKeep.id.value
+      );
+      console.log(
+        "KeepVault return value: ",
+        foundKeep,
+        this.$store.state.vaultKeeps
+      );
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },

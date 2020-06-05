@@ -5,7 +5,6 @@
       :vaultData="vaultButton"
       :key="vaultButton.id"
     />
-
     <create-vault />
   </div>
 </template>

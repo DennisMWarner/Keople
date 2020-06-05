@@ -1,7 +1,7 @@
-<template>
-  <div class="create-keep row bg-primary justify-content-around">
+<template class="row">
+  <div class="create-keep col-10 offset-1 bg-primary justify-content-around">
     <button
-      class="btn btn-sm border border-white btn-block text-white bg-dark btn-rounded shadow p-1 col-8 mt-1"
+      class="btn btn-sm border border-white btn-block text-white bg-success btn-rounded shadow mt-1"
       data-target="#create-keep-modal"
       data-toggle="modal"
     >Create a new keep</button>
