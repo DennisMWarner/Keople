@@ -26,5 +26,12 @@ namespace Keepr.Services
       }
       throw new Exception("Could not delete Keep.");
     }
+
+    internal IEnumerable<VaultKeep> Get(string userId)
+    {
+      {
+        return _repo.Get(userId);
+      }
+    }
   }
 }

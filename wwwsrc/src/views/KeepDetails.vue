@@ -26,6 +26,17 @@
     </div>
 
     <div
+      v-if="this.$store.state.allVaultKeeps.indexOf(this.$store.state.allVaultKeeps.find(vk=>vk.vaultId == this.$store.state.activeVault.id && vk.keepId == this.$store.state.activeKeep.id))>0"
+    >
+      <div class="text-center mt-1">
+        <button
+          class="btn btn-light text-white rounded border shadow w-50 bg-danger"
+          @click="removeKeepFromVault()"
+        >Remove Keep From This Vault</button>
+      </div>
+    </div>
+
+    <div
       class="modal fade"
       id="save-keep-modal"
       tabindex="-1"
@@ -106,6 +117,12 @@ export default {
   },
   components: { keep, vaultSelectButtonGroupColumn },
   mounted() {
+    let activeVaultKeep = this.$store.state.allVaultKeeps.find(
+      vk =>
+        vk.vaultId == this.$store.state.activeVault.id &&
+        vk.keepId == this.$store.state.activeKeep.id
+    );
+    console.log("vaultKeep search result: ", activeVaultKeep.id);
     return this.$store.dispatch("getKeepById", this.$route.params.id);
   },
   destroyed() {

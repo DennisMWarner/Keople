@@ -21,8 +21,25 @@ namespace Keepr.Controllers
       _vks = vks;
     }
 
+    [HttpGet]
+    [Authorize]
+
     [HttpPost]
     [Authorize]
+
+    public ActionResult<IEnumerable<VaultKeep>> Get()
+    {
+      try
+      {
+        var userClaim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        var userId = userClaim.Value;
+        return Ok(_vks.Get(userId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
     public ActionResult<VaultKeep> Post([FromBody] VaultKeep newVaultKeep)
     {
       try

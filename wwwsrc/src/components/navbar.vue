@@ -73,10 +73,12 @@ export default {
       console.log("this.$auth.user: ");
       console.log(this.$auth.user);
       this.$store.dispatch("getUserVaults", this.$auth.email);
+      this.$store.dispatch("getAllVaultKeeps");
     },
     async logout() {
       this.$store.dispatch("resetBearer");
       await this.$auth.logout({ returnTo: window.location.origin });
+      this.$store.state.userVaults = [];
     }
   },
   computed: {

@@ -33,5 +33,11 @@ namespace Keepr.Repositories
       return affectedRows == 1;
 
     }
+
+    internal IEnumerable<VaultKeep> Get(string userId)
+    {
+      string sql = "SELECT * from vaultkeeps WHERE userId = @UserId";
+      return _db.Query<VaultKeep>(sql, new { userId });
+    }
   }
 }

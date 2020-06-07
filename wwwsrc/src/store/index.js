@@ -21,8 +21,10 @@ export default new Vuex.Store({
     userKeeps: [],
     userVaults: [],
     vaultKeeps: [],
+    allVaultKeeps: [],
     activeKeep: {},
-    activeVault: {}
+    activeVault: {},
+    activeVaultKeep: {}
   },
   mutations: {
     setPublicKeeps(state, keeps) {
@@ -44,6 +46,10 @@ export default new Vuex.Store({
     },
     setVaultKeeps(state, vaultKeeps) {
       state.vaultKeeps = vaultKeeps;
+    },
+
+    setAllVaultKeeps(state, allVaultKeeps) {
+      state.allVaultKeeps = allVaultKeeps
     }
   },
   actions: {
@@ -191,6 +197,17 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async getAllVaultKeeps({ dispatch, commit }) {
+      try {
+        let res = await api.get("vaultKeeps");
+        console.log("All vault keeps: ", res.data);
+        commit("setAllVaultKeeps", res.data)
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
   }
 });
