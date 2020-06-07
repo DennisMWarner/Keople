@@ -1,5 +1,5 @@
 <template>
-  <div id="app  full-background bg-primary">
+  <div id="app bg-primary full-background">
     <navbar />
     <router-view />
   </div>
@@ -24,8 +24,4 @@ export default {
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";
-.full-background {
-  min-width: 80vw;
-  max-width: 80vw;
-}
 </style>

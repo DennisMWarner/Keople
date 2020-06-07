@@ -80,14 +80,14 @@ export default new Vuex.Store({
       }
     },
 
-    async saveUserKeep({ dispatch }, keepToUpdate) {
-      try {
-        let res = await api.put("keeps/user", keepToUpdate)
-        dispatch("getUserKeeps")
-      } catch (error) {
-        console.error(error)
-      }
-    },
+    // async saveUserKeep({ dispatch }, keepToUpdate) {
+    //   try {
+    //     let res = await api.put("keeps/user", keepToUpdate)
+    //     dispatch("getUserKeeps")
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
 
     async getKeepById({ commit }, keepId) {
       try {
@@ -147,12 +147,22 @@ export default new Vuex.Store({
     },
 
 
+
     async saveKeepToVault({ }, payload) {
       console.log("saveKeepToVault called... ", payload)
       try {
         let res = api.post("vaultkeeps", payload)
         console.log("saveKeepToVault: ", res)
 
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async removeKeepFromVault({ dispatch }, vaultKeepId) {
+      try {
+        await api.delete("vaultkeeps/" + vaultKeepId)
+        dispatch("getAllVaultKeeps")
       } catch (error) {
         console.error(error)
       }
@@ -189,9 +199,10 @@ export default new Vuex.Store({
       }
     },
     async  editKeep({ commit }, keepToUpdate) {
-      console.log("keep to update: ", keepToUpdate.id)
+      console.log("keep to update: ", keepToUpdate)
       try {
-        let res = await api.put("keeps/" + keepToUpdate.id);
+        let res = await api.put("keeps/" + keepToUpdate.id, keepToUpdate);
+        console.log("res of put request: ", res)
         commit("setPublicKeeps", res.data);
       } catch (error) {
         console.error(error)

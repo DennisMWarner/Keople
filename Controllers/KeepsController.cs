@@ -62,18 +62,19 @@ namespace Keepr.Controllers
 
     [HttpPut("{id}")]
     [Authorize]
-    public ActionResult<Keep> EditKeep([FromBody] Keep newKeep)
+    public ActionResult<Keep> EditKeep([FromBody] Keep keepToUpdate)
     {
       try
       {
-        return Ok(_ks.EditKeep(newKeep));
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        keepToUpdate.UserId = userId.Value;
+        return Ok(_ks.EditKeep(keepToUpdate));
       }
       catch (Exception e)
       {
         return BadRequest(e.Message);
-      };
+      }
     }
-
     [HttpPost]
     [Authorize]
     public ActionResult<Keep> Post([FromBody] Keep newKeep)

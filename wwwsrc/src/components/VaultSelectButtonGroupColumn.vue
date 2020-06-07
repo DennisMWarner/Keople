@@ -1,10 +1,14 @@
 <template>
   <div class="vault-select-button-group-column">
-    <vault-save-keep-button
-      v-for="vaultButton in vaultButtons"
-      :vaultData="vaultButton"
-      :key="vaultButton.id"
-    />
+    <div
+      v-if="this.$store.state.allVaultKeeps.indexOf(this.$store.state.allVaultKeeps.find(vk=>vk.vaultId == this.$store.state.activeVault.id && vk.keepId == this.$store.state.activeKeep.id)) == -1"
+    >
+      <vault-save-keep-button
+        v-for="vaultButton in vaultButtons"
+        :vaultData="vaultButton"
+        :key="vaultButton.id"
+      />
+    </div>
     <create-vault />
   </div>
 </template>

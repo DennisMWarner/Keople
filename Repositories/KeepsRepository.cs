@@ -63,17 +63,12 @@ WHERE (vaultId = @VaultId AND vk.userId = @UserId)
       }
     }
 
-    internal Keep EditKeep(Keep keepToUpdate)
+    internal bool EditKeep(Keep keepToUpdate)
     {
       {
-        string sql = @"
-            UPDATE keeps
-            SET(keeps = @keeps
-            WHERE id = @id
-          ";
-        return _db.QueryFirstOrDefault<Keep>(
-          sql,
-          new { keepToUpdate });
+        string sql = "UPDATE keeps SET Views = @views WHERE id = @Id";
+        int affectedRows = _db.Execute(sql, keepToUpdate);
+        return affectedRows == 1;
       }
     }
 

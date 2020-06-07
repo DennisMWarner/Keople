@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Keepr.Models
 {
   public class Keep

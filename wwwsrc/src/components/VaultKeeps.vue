@@ -1,5 +1,5 @@
 <template>
-  <div class="vault-keeps">
+  <div class="vault-keeps bg-primary">
     <div class>
       <keep v-for="vaultKeep in vaultKeeps" :keepData="vaultKeep" :key="vaultKeep.id"></keep>
     </div>

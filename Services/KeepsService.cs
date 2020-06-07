@@ -38,14 +38,13 @@ namespace Keepr.Services
       return _repo.GetKeepsByVaultId(vaultId, userId);
     }
 
-    internal Keep EditKeep(Keep keepToUpdate)
+    internal string EditKeep(Keep keepToUpdate)
     {
-      Keep updatedKeep = _repo.EditKeep(keepToUpdate);
-      if (updatedKeep == null)
+      if (_repo.EditKeep(keepToUpdate))
       {
-        throw new Exception("Keep Not Found");
+        return "Keep successfully updated.";
       }
-      return updatedKeep;
+      throw new Exception("Could not update keep");
     }
 
 

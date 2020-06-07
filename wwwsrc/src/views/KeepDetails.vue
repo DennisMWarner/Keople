@@ -15,7 +15,7 @@
       </div>
     </div>
     <div
-      v-if="this.$store.state.activeKeep.isPrivate  && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
+      v-if="this.$store.state.activeKeep.isPrivate && this.$auth.user && this.$auth.user.sub == this.$store.state.activeKeep.userId"
     >
       <div class="text-center mt-1">
         <button
@@ -34,9 +34,6 @@
           @click="removeKeepFromVault()"
         >Remove Keep From This Vault</button>
       </div>
-    </div>
-    <div v-else class="row">
-      <div class="col-12">Something went wrong</div>
     </div>
 
     <div
@@ -70,14 +67,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <button
-          class="btn btn-block border btn-danger text-white rounded m-3"
-          @click="getKeepVaultInfo()"
-        >Test</button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -102,20 +91,18 @@ export default {
       return this.$store.dispatch("deleteKeep", this.keep.id);
     },
     saveUserKeep() {
-      updatedKeep.keeps = ++this.keep.keeps;
-      updatedKeep.id = this.keep.id;
-      return this.$store.dispatch("saveUserKeep", updatedKeep);
+      this.updatedKeep.keeps = ++this.keep.keeps;
+      this.updatedKeep.id = this.keep.id;
+      console.log("updatedKeep: ", this.updatedKeep);
+      return this.$store.dispatch("saveUserKeep", this.updatedKeep);
     },
-
-    getKeepVaultInfo() {
-      let foundKeep = this.$store.state.vaultKeeps.indexOf(
-        this.$store.state.activeKeep.id.value
+    removeKeepFromVault() {
+      let foundVaultKeep = this.$store.state.allVaultKeeps.find(
+        vk =>
+          vk.vaultId == this.$store.state.activeVault.id &&
+          vk.keepId == this.$store.state.activeKeep.id
       );
-      console.log(
-        "KeepVault return value: ",
-        foundKeep,
-        this.$store.state.vaultKeeps
-      );
+      this.$store.dispatch("removeKeepFromVault", foundVaultKeep.id);
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },
@@ -126,7 +113,7 @@ export default {
         vk.vaultId == this.$store.state.activeVault.id &&
         vk.keepId == this.$store.state.activeKeep.id
     );
-    console.log("vaultKeep search result: ", activeVaultKeep.id);
+    // console.log("vaultKeep search result: ", activeVaultKeep.id);
   },
   destroyed() {
     return (this.$store.activeKeep = {});

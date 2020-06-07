@@ -1,5 +1,5 @@
 <template >
-  <div class="vaults">
+  <div class="vaults bg-primary">
     <vault v-for="vault in vaults" :vaultData="vault" :key="vault.id"></vault>
   </div>
 </template>

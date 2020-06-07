@@ -1,5 +1,10 @@
 <template>
-  <div class="vault-details">
+  <div class="vault-details full-background bg-primary">
+    <div class="row">
+      <div class="col-12 m-auto">
+        <h5 class="p-1 bg-danger text-warning text-center">{{this.vault.name}}</h5>
+      </div>
+    </div>
     <create-keep />
     <vault-keeps />
     <div class="text-center mt-1">
@@ -46,4 +51,8 @@ export default {
 
 
 <style scoped>
+.full-background {
+  min-width: 100vw;
+  min-height: 100vh;
+}
 </style>
