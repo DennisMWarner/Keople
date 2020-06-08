@@ -4,7 +4,7 @@
       <vault-select-button-group-row />
       <create-keep v-if="this.$auth.isAuthenticated" class="mx-auto" />
       <div v-else class="text-center text-success">
-        <h5 class="text-sm">Please log in or register to create keeps and vaults</h5>
+        <h5 class="text-sm">Log in or register today and do more!</h5>
       </div>
       <keeps />
     </div>

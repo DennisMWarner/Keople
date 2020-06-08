@@ -2,7 +2,7 @@
   <div class="vault-details full-background bg-primary">
     <div class="row">
       <div class="col-12 m-auto">
-        <h5 class="p-1 bg-danger text-warning text-center">{{this.vault.name}}</h5>
+        <h5 class="p-1 bg-primary text-white text-center">{{this.vault.name}}</h5>
       </div>
     </div>
     <create-keep />
@@ -10,8 +10,36 @@
     <div class="text-center mt-1">
       <button
         class="btn btn-light rounded border border-primary text-white shadow w-50 bg-danger"
-        @click="deleteVault()"
+        data-target="#delete-vault-modal"
+        data-toggle="modal"
       >Delete this vault</button>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="delete-vault-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Delete {{this.vault.name}}?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Modal Are you sure you want to delete this vault?
+              <br />This cannot be undone!
+            </p>
+          </div>
+          <div class="modal-footer bg-primary">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-danger text-info"
+              @click="deleteVault()"
+              data-dismiss="modal"
+            >Delete {{this.vault.name}}</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

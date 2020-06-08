@@ -31,8 +31,38 @@
       <div class="text-center mt-1">
         <button
           class="btn btn-light text-white rounded border shadow w-50 bg-danger"
-          @click="removeKeepFromVault()"
+          data-target="#remove-keep-from-vault-modal"
+          data-toggle="modal"
         >Remove Keep From This Vault</button>
+      </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="remove-keep-from-vault-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5
+              class="modal-title"
+            >Remove {{this.keep.name}} from {{this.$store.state.activeVault.name}}?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Modal Are you sure you want to remove {{this.keep.name}} from {{this.$store.state.activeVault.name}}?
+              <br />It can be added again later.
+            </p>
+          </div>
+          <div class="modal-footer bg-primary">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-danger text-info"
+              @click="removeKeepFromVault()"
+              data-dismiss="modal"
+            >Remove Keep from {{this.$store.state.activeVault.name}}</button>
+          </div>
+        </div>
       </div>
     </div>
 
