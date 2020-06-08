@@ -24,8 +24,7 @@ namespace Keepr.Controllers
     [HttpGet]
     [Authorize]
 
-    [HttpPost]
-    [Authorize]
+
 
     public ActionResult<IEnumerable<VaultKeep>> Get()
     {
@@ -40,6 +39,9 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+
+    [HttpPost]
+    [Authorize]
     public ActionResult<VaultKeep> Post([FromBody] VaultKeep newVaultKeep)
     {
       try
