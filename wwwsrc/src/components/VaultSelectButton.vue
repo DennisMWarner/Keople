@@ -3,6 +3,7 @@
     <button
       class="btn btn-warning btn-sm border border-white btn-block text-white"
       @click="displayVaultDetailsPage()"
+      data-dismiss="modal"
     >{{vaultData.name}}</button>
   </div>
 </template>

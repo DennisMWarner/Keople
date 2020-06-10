@@ -1,14 +1,11 @@
 <template>
   <div class="vault-select-button-group-column">
-    <div
-      v-if="this.$store.state.allVaultKeeps.indexOf(this.$store.state.allVaultKeeps.find(vk=>vk.vaultId == this.$store.state.activeVault.id && vk.keepId == this.$store.state.activeKeep.id)) == -1"
-    >
-      <vault-save-keep-button
-        v-for="vaultButton in vaultButtons"
-        :vaultData="vaultButton"
-        :key="vaultButton.id"
-      />
-    </div>
+    <vault-save-keep-button
+      v-for="vaultButton in vaultButtons"
+      :vaultData="vaultButton"
+      :key="vaultButton.id"
+    />
+
     <create-vault />
   </div>
 </template>
@@ -28,7 +25,17 @@ export default {
     }
   },
   methods: {},
-  components: { vaultSaveKeepButton, createVault }
+  components: { vaultSaveKeepButton, createVault },
+  mounted() {
+    this.$store.state.vaultKeepsFilteredByActiveKeep = this.$store.state.allVaultKeeps.filter(
+      vk =>
+        vk.keepId != this.$store.state.activeKeep.id &&
+        vk.userId == this.$auth.user.sub
+    );
+  },
+  destroyed() {
+    this.$store.state.vaultKeepsFilteredByActiveKeep = [];
+  }
 };
 </script>
 

@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     keeps() {
-      return this.$store.state.publicKeeps;
+      return this.$store.state.allKeeps;
     }
   },
   methods: {},

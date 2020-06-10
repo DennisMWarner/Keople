@@ -6,7 +6,7 @@
       data-toggle="modal"
     >New Vault</button>
     <div
-      class="modal fade"
+      class="modal fade modal-sm"
       id="create-vault-modal"
       tabindex="-1"
       role="dialog"
@@ -43,7 +43,12 @@
           </div>
           <div class="modal-footer bg-secondary border border-light rounded shadow">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="createVault()">Save Keep</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              @click="createVault()"
+            >Save Keep</button>
           </div>
         </div>
       </div>

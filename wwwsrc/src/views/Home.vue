@@ -30,7 +30,7 @@ export default {
     }
   },
   created() {
-    return this.$store.dispatch("getPublicKeeps");
+    return this.$store.dispatch("getAllKeeps");
   }
 };
 </script>

@@ -74,7 +74,7 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content border border-secondary rounded shadow">
           <div class="modal-header bg-primary text-light border rounded shadow-sm border-light">
             <h5

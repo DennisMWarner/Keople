@@ -17,18 +17,19 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    publicKeeps: [],
+    allKeeps: [],
     userKeeps: [],
     userVaults: [],
     vaultKeeps: [],
     allVaultKeeps: [],
     activeKeep: {},
     activeVault: {},
-    activeVaultKeep: {}
+    activeVaultKeep: {},
+    vaultKeepsFilteredByActiveKeep: []
   },
   mutations: {
-    setPublicKeeps(state, keeps) {
-      state.publicKeeps = keeps;
+    setAllKeeps(state, keeps) {
+      state.allKeeps = keeps;
     },
     setUserKeeps(state, keeps) {
       state.userKeeps = keeps;
@@ -59,11 +60,11 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
-    async getPublicKeeps({ commit }) {
+    async getAllKeeps({ commit }) {
       console.log("getPublicKeeps called: ")
       try {
         let res = await api.get("keeps");
-        commit("setPublicKeeps", res.data)
+        commit("setAllKeeps", res.data)
         console.log("result of getPublicKeeps: ", res)
       } catch (error) {
         console.error(error);
@@ -115,7 +116,7 @@ export default new Vuex.Store({
       try {
         console.log("new keep sent:", newKeep)
         let res = await api.post("keeps", newKeep)
-        dispatch("getUserKeeps")
+        dispatch("getAllKeeps")
         console.log("new keep returned:", res.data)
       } catch (error) {
         console.error(error)
@@ -148,12 +149,12 @@ export default new Vuex.Store({
 
 
 
-    async saveKeepToVault({ }, payload) {
+    async saveKeepToVault({ dispatch }, payload) {
       console.log("saveKeepToVault called... ", payload)
       try {
         let res = api.post("vaultkeeps", payload)
         console.log("saveKeepToVault: ", res)
-
+        dispatch("getAllVaultKeeps")
       } catch (error) {
         console.error(error)
       }
@@ -203,7 +204,7 @@ export default new Vuex.Store({
       try {
         let res = await api.put("keeps/" + keepToUpdate.id, keepToUpdate);
         console.log("res of put request: ", res)
-        commit("setPublicKeeps", res.data);
+        commit("setAllKeeps", res.data);
       } catch (error) {
         console.error(error)
       }
