@@ -19,18 +19,11 @@ export default {
   computed: {},
   methods: {
     saveKeepToVault() {
-      console.log(
-        "vault id search: ",
-
-        this.$store.state.vaultKeeps.find(vk => vk.vaultId == this.vaultData.id)
-      );
       let payload = {};
       payload.vaultId = this.vaultData.id;
       payload.keepId = this.$store.state.activeKeep.id;
-      console.log("payload", payload);
 
       this.$store.dispatch("saveKeepToVault", payload);
-      console.log("payload: ", payload);
     }
   },
   components: {}

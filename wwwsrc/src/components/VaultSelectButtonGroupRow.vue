@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     displayVaultDetailsPage() {
-      console.log("vaultdata.id at diplayVaultDetailsPage:", this.vaultData.id);
       this.$router.push("/vault/" + this.vaultData.id);
     }
   },

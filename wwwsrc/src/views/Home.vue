@@ -29,7 +29,13 @@ export default {
       this.$store.dispatch("logout");
     }
   },
-  created() {
+  beforeCreate() {
+    console.log(
+      "activeKeep: ",
+      this.$store.state.activeKeep,
+      "activeVaultKeep: ",
+      this.$store.state.activeVaultKeep
+    );
     return this.$store.dispatch("getAllKeeps");
   }
 };

@@ -121,9 +121,20 @@ export default {
       return this.$store.dispatch("deleteKeep", this.keep.id);
     },
     saveUserKeep() {
+      let ineligibleVaultIds = this.$store.state.allVaultKeeps
+        .filter(
+          vk =>
+            vk.keepId == this.$store.state.activeKeep.id &&
+            vk.userId == this.$auth.user.sub
+        )
+        .map(id => {
+          return id.vaultId;
+        });
+      this.$store.state.vaultKeepsFilteredByActiveKeep = this.$store.state.userVaults.filter(
+        v => !ineligibleVaultIds.includes(v.id)
+      );
       this.updatedKeep.keeps = ++this.keep.keeps;
       this.updatedKeep.id = this.keep.id;
-      console.log("updatedKeep: ", this.updatedKeep);
       return this.$store.dispatch("saveUserKeep", this.updatedKeep);
     },
     removeKeepFromVault() {
@@ -136,17 +147,17 @@ export default {
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },
+
   mounted() {
-    this.$store.dispatch("getKeepById", this.$route.params.id);
     let activeVaultKeep = this.$store.state.allVaultKeeps.find(
       vk =>
         vk.vaultId == this.$store.state.activeVault.id &&
         vk.keepId == this.$store.state.activeKeep.id
     );
-    // console.log("vaultKeep search result: ", activeVaultKeep.id);
   },
   destroyed() {
-    return (this.$store.activeKeep = {});
+    this.$store.activeKeep = {};
+    this.$store.activeVaultKeep = {};
   }
 };
 </script>

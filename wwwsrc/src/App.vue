@@ -1,7 +1,9 @@
 <template>
   <div id="app bg-primary full-background">
     <navbar />
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 

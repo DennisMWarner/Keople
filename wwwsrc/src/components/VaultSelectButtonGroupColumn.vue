@@ -1,5 +1,6 @@
 <template>
   <div class="vault-select-button-group-column">
+    <div></div>
     <vault-save-keep-button
       v-for="vaultButton in vaultButtons"
       :vaultData="vaultButton"
@@ -21,21 +22,11 @@ export default {
   },
   computed: {
     vaultButtons() {
-      return this.$store.state.userVaults;
+      return this.$store.state.vaultKeepsFilteredByActiveKeep;
     }
   },
   methods: {},
-  components: { vaultSaveKeepButton, createVault },
-  mounted() {
-    this.$store.state.vaultKeepsFilteredByActiveKeep = this.$store.state.allVaultKeeps.filter(
-      vk =>
-        vk.keepId != this.$store.state.activeKeep.id &&
-        vk.userId == this.$auth.user.sub
-    );
-  },
-  destroyed() {
-    this.$store.state.vaultKeepsFilteredByActiveKeep = [];
-  }
+  components: { vaultSaveKeepButton, createVault }
 };
 </script>
 

@@ -60,16 +60,11 @@ export default {
   },
   methods: {
     deleteVault() {
-      console.log(
-        "deleteVault called, this.vault.id:",
-        this.$store.state.activeVault.id
-      );
       this.$store.dispatch("deleteVault", this.vault.id);
     }
   },
   components: { vaultKeeps, createKeep },
   mounted() {
-    console.log("route: ", this.$route.params);
     //clear vaultKeeps from store to prevent render before data is updated
     this.$store.state.vaultKeeps = [];
     return this.$store.dispatch("getKeepsByVaultId", this.$route.params.id);

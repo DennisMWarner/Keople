@@ -31,11 +31,15 @@ export default {
   computed: {},
   methods: {
     displayKeepDetailsPage() {
-      console.log("this.auth.user: ", this.$auth.user);
+      this.$store.state.vaultKeepsFilteredByActiveKeep = [];
       this.keepData.views += 1;
       this.$store.dispatch("editKeep", this.keepData);
+      this.$store.dispatch("getKeepById", this.keepData.id);
       this.$router.push("/keep/" + this.keepData.id);
     }
+  },
+  destroyed() {
+    this.$store.state.activeKeep = {};
   },
   components: {}
 };

@@ -61,21 +61,17 @@ export default new Vuex.Store({
       api.defaults.headers.authorization = "";
     },
     async getAllKeeps({ commit }) {
-      console.log("getPublicKeeps called: ")
       try {
         let res = await api.get("keeps");
         commit("setAllKeeps", res.data)
-        console.log("result of getPublicKeeps: ", res)
       } catch (error) {
         console.error(error);
       }
     },
     async getUserKeeps({ commit }) {
-      console.log("getUserKeeps called: ")
       try {
         let res = await api.get("keeps/user");
         commit("setUserKeeps", res.data)
-        console.log("result of getUserKeeps: ", res)
       } catch (error) {
         console.error(error);
       }
@@ -92,10 +88,8 @@ export default new Vuex.Store({
 
     async getKeepById({ commit }, keepId) {
       try {
-        console.log("getKeepById called ")
         let res = await api.get("keeps/" + keepId)
         commit("setActiveKeep", res.data)
-        console.log("result of getKeepById: ", res)
       } catch (error) {
         console.error(error)
       }
@@ -104,8 +98,6 @@ export default new Vuex.Store({
       try {
         let res = await api.get("vaults/" + vaultId + "/keeps")
         commit("setVaultKeeps", res.data);
-        console.log("result of getKeepsByVaultId: ", res)
-
       } catch (error) {
         console.error(error)
       }
@@ -114,10 +106,8 @@ export default new Vuex.Store({
 
     async createKeep({ dispatch }, newKeep) {
       try {
-        console.log("new keep sent:", newKeep)
         let res = await api.post("keeps", newKeep)
         dispatch("getAllKeeps")
-        console.log("new keep returned:", res.data)
       } catch (error) {
         console.error(error)
       }
@@ -128,9 +118,6 @@ export default new Vuex.Store({
       try {
         let res = await api.get("vaults");
         commit("setUserVaults", res.data);
-
-        console.log("result of getUserVaults: ", res)
-
       } catch (error) {
         console.error(error)
       }
@@ -138,10 +125,8 @@ export default new Vuex.Store({
 
     async getVaultById({ commit }, vaultId) {
       try {
-        console.log("getVaultById called ")
         let res = await api.get("vaults/" + vaultId)
         commit("setActiveVault", res.data)
-        console.log("result of getVaultById: ", res)
       } catch (error) {
         console.error(error)
       }
@@ -150,10 +135,8 @@ export default new Vuex.Store({
 
 
     async saveKeepToVault({ dispatch }, payload) {
-      console.log("saveKeepToVault called... ", payload)
       try {
         let res = api.post("vaultkeeps", payload)
-        console.log("saveKeepToVault: ", res)
         dispatch("getAllVaultKeeps")
       } catch (error) {
         console.error(error)
@@ -171,13 +154,11 @@ export default new Vuex.Store({
 
     async createVault({ dispatch }, payload) {
       try {
-        console.log("new vault sent:", payload.newVault)
         let res = await api.post("vaults", payload.newVault)
         let saveKeepToVaultPayload = {};
         saveKeepToVaultPayload.vaultId = res.data.id;
         saveKeepToVaultPayload.keepId = payload.keepId;
         dispatch("saveKeepToVault", saveKeepToVaultPayload)
-        console.log("new vault returned:", res.data)
       } catch (error) {
         console.error(error)
       }
@@ -200,10 +181,8 @@ export default new Vuex.Store({
       }
     },
     async  editKeep({ commit }, keepToUpdate) {
-      console.log("keep to update: ", keepToUpdate)
       try {
         let res = await api.put("keeps/" + keepToUpdate.id, keepToUpdate);
-        console.log("res of put request: ", res)
         commit("setAllKeeps", res.data);
       } catch (error) {
         console.error(error)
@@ -213,9 +192,7 @@ export default new Vuex.Store({
     async getAllVaultKeeps({ dispatch, commit }) {
       try {
         let res = await api.get("vaultKeeps");
-        console.log("All vault keeps: ", res.data);
         commit("setAllVaultKeeps", res.data)
-
       } catch (error) {
         console.error(error)
       }
