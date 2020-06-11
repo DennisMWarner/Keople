@@ -5,7 +5,7 @@
         v-for="vaultButton in vaultButtons"
         :vaultData="vaultButton"
         :key="vaultButton.id"
-        class="col-3"
+        class="col-md-3 col-6 mt-2"
       />
     </div>
   </div>

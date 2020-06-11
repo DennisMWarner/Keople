@@ -1,5 +1,5 @@
 <template>
-  <div class="vault-select-button col-sm-3 mt-0 mb-2">
+  <div class="vault-select-button col-sm-3 mt-0">
     <button
       class="btn btn-warning btn-sm border border-white btn-block text-white"
       @click="displayVaultDetailsPage()"

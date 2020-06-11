@@ -1,12 +1,20 @@
 <template>
-  <div class="home bg-primary row">
-    <div class="col-12">
-      <vault-select-button-group-row />
-      <create-keep v-if="this.$auth.isAuthenticated" class="mx-auto" />
-      <div v-else class="text-center text-success">
-        <h5 class="text-sm">Log in or register today and do more!</h5>
+  <div class="home bg-primary container-fluid">
+    <div class="row">
+      <vault-select-button-group-row class="col-12" />
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <create-keep v-if="this.$auth.isAuthenticated" class="mx-auto" />
+        <div v-else class="text-center text-success pt-3">
+          <h5 class="text-sm">Log in or register today and do more!</h5>
+        </div>
       </div>
-      <keeps />
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <keeps />
+      </div>
     </div>
   </div>
 </template>

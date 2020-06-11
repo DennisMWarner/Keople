@@ -1,8 +1,10 @@
 <template>
-  <div class="user-keeps-page bg-primary row">
-    <div class="col-12">
-      <create-keep />
-      <userKeeps />
+  <div class="user-keeps-page bg-primary container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <create-keep />
+        <userKeeps />
+      </div>
     </div>
   </div>
 </template>
