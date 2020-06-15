@@ -4,3 +4,4 @@ obj
 bin
 appsettings.Development.json
 appsettings.json
+deploy.bat
