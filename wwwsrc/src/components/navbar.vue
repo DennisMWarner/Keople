@@ -1,7 +1,7 @@
 <template>
   <!-- //TODO figure out why navbar isn't functioning as expected w/responsive bootstrap class (navbar-expand-lg)-->
   <div class="container-fluid">
-    <div class="row justify-content-between">
+    <div class="row justify-content-between bg-primary">
       <nav class="navbar navbar-expand-sm navbar-light bg-primary col-12 p-0">
         <router-link class="navbar-brand col-sm-2 col-8" :to="{ name: 'home' }">
           <img

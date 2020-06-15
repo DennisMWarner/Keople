@@ -67,6 +67,7 @@ export default {
   methods: {
     deleteVault() {
       this.$store.dispatch("deleteVault", this.vault.id);
+      this.$router.push("/");
     }
   },
   components: { vaultKeeps, createKeep },

@@ -1,7 +1,7 @@
 <template>
-  <div class="keep-details container-fluid bg-primary">
+  <div class="keep-details container-fluid bg-primary full-background">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 text-center">
         <div class="bg-primary p-0 mt-2">
           <img :src="keep.img" class="img-fluid border rounded shadow border-warning p-1" />
         </div>
