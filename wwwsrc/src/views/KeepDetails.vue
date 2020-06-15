@@ -148,6 +148,7 @@ export default {
           vk.keepId == this.$store.state.activeKeep.id
       );
       this.$store.dispatch("removeKeepFromVault", foundVaultKeep.id);
+      this.$router.push("/vault/" + this.$store.state.activeVault.id);
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },

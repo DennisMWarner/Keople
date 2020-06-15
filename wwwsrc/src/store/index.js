@@ -146,7 +146,7 @@ export default new Vuex.Store({
     async removeKeepFromVault({ dispatch }, vaultKeepId) {
       try {
         await api.delete("vaultkeeps/" + vaultKeepId)
-        dispatch("getAllVaultKeeps")
+        dispatch("getUserKeeps")
       } catch (error) {
         console.error(error)
       }
@@ -180,7 +180,7 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async  editKeep({ commit }, keepToUpdate) {
+    async editKeep({ commit }, keepToUpdate) {
       try {
         let res = await api.put("keeps/" + keepToUpdate.id, keepToUpdate);
         commit("setAllKeeps", res.data);

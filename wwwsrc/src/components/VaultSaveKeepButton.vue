@@ -22,7 +22,7 @@ export default {
       let payload = {};
       payload.vaultId = this.vaultData.id;
       payload.keepId = this.$store.state.activeKeep.id;
-
+      // this.$store.state.vaultKeepsFilteredByActiveKeep = [];
       this.$store.dispatch("saveKeepToVault", payload);
     }
   },

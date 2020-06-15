@@ -21,7 +21,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse img-fluid bg-white rounded shadow ml-3 mt-2 col-9 p-0 justify-content-between"
+          class="collapse navbar-collapse img-fluid bg-white rounded shadow ml-3 mt-2 col-md-9 col-12 text-center p-0 justify-content-between"
           id="navbarText"
         >
           <span>
@@ -88,6 +88,9 @@ export default {
     userInfo() {
       return this.$auth;
     }
+  },
+  mounted() {
+    console.log(this.$auth);
   }
 };
 </script>

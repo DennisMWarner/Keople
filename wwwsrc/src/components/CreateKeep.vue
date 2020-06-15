@@ -60,7 +60,12 @@
           </div>
           <div class="modal-footer bg-secondary border border-light rounded shadow">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="createKeep()">Save Keep</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              @click="createKeep()"
+            >Save Keep</button>
           </div>
         </div>
       </div>

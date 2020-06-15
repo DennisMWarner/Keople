@@ -2,14 +2,16 @@
   <div class="vault-details full-background bg-primary">
     <div class="row">
       <div class="col-12 m-auto">
-        <h5 class="p-1 bg-primary text-white text-center">{{this.vault.name}}</h5>
+        <h4
+          class="p-1 bg-warning border rounded text-light shadow w-75 mx-auto border-white mt-2 text-white text-center"
+        >{{this.vault.name}}</h4>
       </div>
     </div>
-    <create-keep />
     <vault-keeps />
+    <create-keep />
     <div class="text-center mt-1">
       <button
-        class="btn btn-light rounded border border-primary text-white shadow w-50 bg-danger"
+        class="btn btn-light rounded border border-white text-white shadow w-75 bg-danger"
         data-target="#delete-vault-modal"
         data-toggle="modal"
       >Delete this vault</button>
@@ -18,7 +20,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">Delete {{this.vault.name}}?</h5>
+            <h5 class="modal-title">Delete "{{this.vault.name}}"?</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -30,13 +32,17 @@
             </p>
           </div>
           <div class="modal-footer bg-primary">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             <button
               type="button"
-              class="btn btn-danger text-info"
+              class="btn btn-success border border white"
+              data-dismiss="modal"
+            >Cancel</button>
+            <button
+              type="button"
+              class="btn btn-danger text-info border border-info"
               @click="deleteVault()"
               data-dismiss="modal"
-            >Delete {{this.vault.name}}</button>
+            >Delete "{{this.vault.name}}"</button>
           </div>
         </div>
       </div>
