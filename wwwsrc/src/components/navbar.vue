@@ -21,7 +21,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse img-fluid bg-white rounded shadow ml-3 mt-2 col-md-9 col-12 text-center p-0 justify-content-between"
+          class="collapse navbar-collapse img-fluid bg-white rounded shadow mx-auto mt-2 col-md-9 col-11 text-center p-0 justify-content-between"
           id="navbarText"
         >
           <span>
@@ -38,10 +38,10 @@
               </li>
             </ul>
           </span>
-          <span class="navbar-text mr-1">
+          <span class="navbar-text mr-2">
             <span
               v-if="$auth.isAuthenticated"
-              class="bg-primary border border-dark text-light rounded shadow px-2 pt-0 pb-1 mt-3 mr-2 ml-1"
+              class="bg-primary border border-dark text-light rounded shadow px-2 pb-1 mr-2 ml-1"
             >{{userInfo.user.name}}</span>
             <button
               class="btn btn-sm btn-primary border border-secondary rounded shadow"
