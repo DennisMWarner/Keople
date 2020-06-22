@@ -1,5 +1,5 @@
 <template>
-  <div class="user-keeps bg-primary">
+  <div class="user-keeps bg-primary mt-2">
     <div class>
       <keep v-for="keep in userKeeps" :keepData="keep" :key="keep.id"></keep>
     </div>

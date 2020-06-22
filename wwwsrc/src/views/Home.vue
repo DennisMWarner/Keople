@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-primary container-fluid">
+  <div class="home container-fluid bg-primary">
     <div class="row">
       <vault-select-button-group-row class="col-12" />
     </div>
@@ -11,8 +11,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
+    <div class="row justify-content-around">
+      <div class="col-12 mx-auto">
         <keeps />
       </div>
     </div>

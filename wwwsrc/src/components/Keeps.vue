@@ -1,6 +1,6 @@
 <template>
-  <div class="keeps row">
-    <div class="col-md-12 bg-primary mx-auto">
+  <div class="keeps row mt-2">
+    <div class="col-md-12 bg-primary">
       <div class="card-columns">
         <keep v-for="keep in keeps" :keepData="keep" :key="keep.id"></keep>
       </div>

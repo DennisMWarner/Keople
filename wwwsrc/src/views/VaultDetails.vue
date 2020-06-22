@@ -1,5 +1,5 @@
 <template>
-  <div class="vault-details full-background bg-primary">
+  <div class="vault-details bg-primary container-fluid">
     <div class="row">
       <div class="col-12 m-auto">
         <h4

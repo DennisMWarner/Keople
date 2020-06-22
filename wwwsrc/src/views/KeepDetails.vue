@@ -1,15 +1,15 @@
 <template>
-  <div class="keep-details container-fluid bg-primary full-background">
+  <div class="keep-details container-fluid bg-primary">
     <div class="row">
-      <div class="col-12 text-center">
-        <div class="bg-primary p-0 mt-2">
+      <div class="col-12 text-center my-2">
+        <div class="bg-primary p-0">
           <img :src="keep.img" class="img-fluid border rounded shadow border-warning p-1" />
         </div>
       </div>
     </div>
 
     <div v-if="this.$auth.user">
-      <div class="text-center mt-1">
+      <div class="text-center">
         <button
           class="btn btn-success text-white rounded border shadow w-50"
           data-target="#save-keep-modal"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="keep card m-2 bg-light border border-warning rounded shadow"
+    class="keep card bg-light border border-warning rounded shadow mb-3"
     @click="displayKeepDetailsPage()"
   >
     <img :src="keepData.img" class="card-img-top" alt="..." />
