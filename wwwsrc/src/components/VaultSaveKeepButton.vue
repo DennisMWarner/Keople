@@ -24,10 +24,10 @@ export default {
       this.updatedKeep.keeps = ++this.$store.state.activeKeep.keeps;
       this.updatedKeep.id = this.$store.state.activeKeep.id;
       this.$store.dispatch("editKeep", this.updatedKeep);
+      console.log("updatedKeep in saveKeepToVault(): ", this.updatedKeep);
       let payload = {};
       payload.vaultId = this.vaultData.id;
       payload.keepId = this.$store.state.activeKeep.id;
-      // this.$store.state.vaultKeepsFilteredByActiveKeep = [];
       this.$store.dispatch("saveKeepToVault", payload);
     }
   },

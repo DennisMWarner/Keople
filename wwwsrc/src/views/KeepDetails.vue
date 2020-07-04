@@ -124,7 +124,8 @@ export default {
     deleteKeep() {
       return this.$store.dispatch("deleteKeep", this.keep.id);
     },
-    SetValidVaults() {
+    async SetValidVaults() {
+      await this.$store.dispatch("getAllVaultKeeps");
       let ineligibleVaultIds = this.$store.state.allVaultKeeps
         .filter(
           vk =>
@@ -136,6 +137,10 @@ export default {
         });
       this.$store.state.vaultKeepsFilteredByActiveKeep = this.$store.state.userVaults.filter(
         v => !ineligibleVaultIds.includes(v.id)
+      );
+      console.log(
+        "vaultKeepsFilteredByActiveKeep: ",
+        this.$store.state.vaultKeepsFilteredByActiveKeep
       );
     },
     removeKeepFromVault() {

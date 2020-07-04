@@ -62,12 +62,16 @@ export default {
   name: "create-vault",
   data() {
     return {
-      newVault: {}
+      newVault: {},
+      updatedKeep: {}
     };
   },
   computed: {},
   methods: {
     createVault() {
+      this.updatedKeep.keeps = ++this.$store.state.activeKeep.keeps;
+      this.updatedKeep.id = this.$store.state.activeKeep.id;
+      this.$store.dispatch("editKeep", this.updatedKeep);
       let payload = {};
       let saveKeepToVaultPayload = {};
       payload.newVault = this.newVault;
