@@ -18,9 +18,6 @@
         <div class="modal-content border border-secondary rounded shadow">
           <div class="modal-header bg-primary text-light border rounded shadow-sm border-light">
             <h5 class="modal-title" id="exampleModalLabel">Create a new keep</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <form>
@@ -40,6 +37,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Image URL"
+                  required
                   v-model="newKeep.img"
                 />
               </div>
@@ -50,7 +48,10 @@
                   id="exampleCheck1"
                   v-model="newKeep.isPrivate"
                 />
-                <label class="form-check-label mr-4" for="exampleCheck1">Make Private</label>
+                <label
+                  class="form-check-label mr-4"
+                  for="exampleCheck1"
+                >Private (required if you want to delete keep in the future)</label>
                 <!-- <span class="ml-4">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                     <label class="form-check-label" for="exampleCheck1">Show my email</label>
@@ -58,11 +59,15 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer bg-secondary border border-light rounded shadow">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="modal-footer bg-primary border border-light rounded shadow">
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-success border rounded shadow border-white"
+              data-dismiss="modal"
+            >Cancel</button>
+            <button
+              type="button"
+              class="btn btn-warning border rounded shadow border-white"
               data-dismiss="modal"
               @click="createKeep()"
             >Save Keep</button>

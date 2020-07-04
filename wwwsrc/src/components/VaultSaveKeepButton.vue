@@ -13,12 +13,17 @@
 export default {
   name: "vault-save-keep-button",
   data() {
-    return {};
+    return {
+      updatedKeep: {}
+    };
   },
   props: ["vaultData"],
   computed: {},
   methods: {
     saveKeepToVault() {
+      this.updatedKeep.keeps = ++this.$store.state.activeKeep.keeps;
+      this.updatedKeep.id = this.$store.state.activeKeep.id;
+      this.$store.dispatch("editKeep", this.updatedKeep);
       let payload = {};
       payload.vaultId = this.vaultData.id;
       payload.keepId = this.$store.state.activeKeep.id;

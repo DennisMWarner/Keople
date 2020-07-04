@@ -23,11 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-.full-background {
-  min-width: 100vw;
-  max-width: 100vw;
-  min-height: 100vh;
-}
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";

@@ -66,7 +66,7 @@ WHERE (vaultId = @VaultId AND vk.userId = @UserId)
     internal bool EditKeep(Keep keepToUpdate)
     {
       {
-        string sql = "UPDATE keeps SET Views = @views WHERE id = @Id";
+        string sql = "UPDATE keeps SET Views = @views, Keeps = @keeps WHERE id = @Id";
         int affectedRows = _db.Execute(sql, keepToUpdate);
         return affectedRows == 1;
       }

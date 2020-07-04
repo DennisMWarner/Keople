@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 m-auto">
         <h4
-          class="p-1 bg-warning border rounded text-light shadow w-75 mx-auto border-white mt-2 text-white text-center"
+          class="p-1 rounded shadow-sm w-100 mx-auto mt-2 text-white text-center"
         >{{this.vault.name}}</h4>
       </div>
     </div>
@@ -81,8 +81,7 @@ export default {
 
 
 <style scoped>
-.full-background {
-  min-width: 100vw;
-  min-height: 100vh;
+.see-through-light {
+  opacity: 0.1;
 }
 </style>

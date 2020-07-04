@@ -14,7 +14,7 @@
           class="btn btn-success text-white rounded border shadow w-50"
           data-target="#save-keep-modal"
           data-toggle="modal"
-          @click="saveUserKeep()"
+          @click="SetValidVaults()"
         >Keep</button>
       </div>
     </div>
@@ -58,7 +58,7 @@
             </p>
           </div>
           <div class="modal-footer bg-primary">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
             <button
               type="button"
               class="btn btn-danger text-info"
@@ -124,7 +124,7 @@ export default {
     deleteKeep() {
       return this.$store.dispatch("deleteKeep", this.keep.id);
     },
-    saveUserKeep() {
+    SetValidVaults() {
       let ineligibleVaultIds = this.$store.state.allVaultKeeps
         .filter(
           vk =>
@@ -137,16 +137,19 @@ export default {
       this.$store.state.vaultKeepsFilteredByActiveKeep = this.$store.state.userVaults.filter(
         v => !ineligibleVaultIds.includes(v.id)
       );
-      this.updatedKeep.keeps = ++this.keep.keeps;
-      this.updatedKeep.id = this.keep.id;
-      return this.$store.dispatch("saveUserKeep", this.updatedKeep);
     },
     removeKeepFromVault() {
+      this.$store.dispatch("getAllVaultKeeps");
+      this.updatedKeep.keeps = --this.keep.keeps;
+      console.log("keeps count: ", this.keep.keeps, this.updatedKeep);
+      this.updatedKeep.id = this.keep.id;
+
       let foundVaultKeep = this.$store.state.allVaultKeeps.find(
         vk =>
           vk.vaultId == this.$store.state.activeVault.id &&
           vk.keepId == this.$store.state.activeKeep.id
       );
+      this.$store.dispatch("editKeep", this.updatedKeep);
       this.$store.dispatch("removeKeepFromVault", foundVaultKeep.id);
       this.$router.push("/vault/" + this.$store.state.activeVault.id);
     }
