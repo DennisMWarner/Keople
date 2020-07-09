@@ -16,6 +16,7 @@ export default {
   data() {
     return {};
   },
+  props: [],
   computed: {
     keeps() {
       return this.$store.state.allKeeps;

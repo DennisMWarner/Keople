@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div
+    <!-- <div
       v-if="this.$store.state.allVaultKeeps.indexOf(this.$store.state.allVaultKeeps.find(vk=>vk.vaultId == this.$store.state.activeVault.id && vk.keepId == this.$store.state.activeKeep.id)) >= 0"
     >
       <div class="text-center mt-1">
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div
       class="modal fade"

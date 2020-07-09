@@ -1,14 +1,14 @@
 <template>
   <div class="vault-keeps bg-primary">
     <div class>
-      <keep v-for="vaultKeep in vaultKeeps" :keepData="vaultKeep" :key="vaultKeep.id"></keep>
+      <vault-keep v-for="vaultKeep in vaultKeeps" :vaultKeepData="vaultKeep" :key="vaultKeep.id"></vault-keep>
     </div>
   </div>
 </template>
 
 
 <script>
-import keep from "./Keep.vue";
+import vaultKeep from "./VaultKeep.vue";
 export default {
   name: "vault-keeps",
   data() {
@@ -21,7 +21,7 @@ export default {
   },
   methods: {},
 
-  components: { keep }
+  components: { vaultKeep }
 };
 </script>
 
