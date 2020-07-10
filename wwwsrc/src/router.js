@@ -53,7 +53,7 @@ export default new Router({
       path: "/vault/:id/keep/:id",
       name: "vaultKeepDetails",
       component: VaultKeepDetails,
-      //beforeEnter: authGuard
+      beforeEnter: authGuard
     }
   ]
 

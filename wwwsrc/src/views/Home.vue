@@ -13,7 +13,7 @@
     </div>
     <div class="row justify-content-around">
       <div class="col-12 mx-auto">
-        <keeps />
+        <keeps class="border border-warning rounded p-2 no-gutters" />
       </div>
     </div>
   </div>
@@ -37,14 +37,8 @@ export default {
       this.$store.dispatch("logout");
     }
   },
-  beforeCreate() {
-    console.log(
-      "activeKeep: ",
-      this.$store.state.activeKeep,
-      "activeVaultKeep: ",
-      this.$store.state.activeVaultKeep
-    );
-    return this.$store.dispatch("getAllKeeps");
+  async beforeCreate() {
+    await this.$store.dispatch("getAllKeeps");
   }
 };
 </script>

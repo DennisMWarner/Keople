@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
         <create-keep />
-        <userKeeps />
+        <userKeeps class="border border-warning rounded p-2 no-gutters" />
       </div>
     </div>
   </div>

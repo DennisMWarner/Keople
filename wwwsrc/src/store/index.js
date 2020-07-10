@@ -192,10 +192,10 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async editKeep({ commit }, keepToUpdate) {
+    async editKeep({ dispatch }, keepToUpdate) {
       try {
         let res = await api.put("keeps/" + keepToUpdate.id, keepToUpdate);
-        commit("setAllKeeps", res.data);
+        dispatch("getAllKeeps", res.data);
       } catch (error) {
         console.error(error)
       }

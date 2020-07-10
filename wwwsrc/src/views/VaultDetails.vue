@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-12 m-auto">
         <h4
-          class="p-1 rounded shadow-sm w-100 mx-auto mt-2 text-white text-center"
+          class="p-1 rounded shadow-sm w-100 mx-auto mt-2 text-white text-center border border-white bg-warning"
         >{{this.vault.name}}</h4>
       </div>
     </div>
-    <vault-keeps />
+    <vault-keeps class="border border-warning rounded p-2 no-gutters" />
     <create-keep />
     <div class="text-center mt-1">
       <button
@@ -65,7 +65,12 @@ export default {
     }
   },
   methods: {
-    deleteVault() {
+    async deleteVault() {
+      await this.$store.state.vaultKeeps.forEach(vk => {
+        --vk.keeps;
+        this.$store.dispatch("editKeep", vk);
+      });
+
       this.$store.dispatch("deleteVault", this.vault.id);
       this.$router.push("/");
     }

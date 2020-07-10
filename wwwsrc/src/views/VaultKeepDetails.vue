@@ -50,14 +50,35 @@ import KeepDetails from "../views/KeepDetails";
 export default {
   name: "vault-keep-details",
   data() {
-    return {};
+    return {
+      updatedKeep: {}
+    };
   },
   computed: {
     vaultKeep() {
       return this.$store.state.activeVaultKeep;
     }
   },
-  methods: {},
+  methods: {
+    removeKeepFromVault() {
+      this.$store.dispatch("getAllVaultKeeps");
+      this.updatedKeep.keeps = --this.vaultKeep.keeps;
+      console.log("keeps count: ", this.vaultKeep.keeps, this.updatedKeep);
+      this.updatedKeep.id = this.vaultKeep.id;
+
+      let foundVaultKeep = this.$store.state.allVaultKeeps.find(
+        vk =>
+          vk.vaultId == this.$store.state.activeVault.id &&
+          vk.keepId == this.$store.state.activeKeep.id
+      );
+      this.$store.dispatch("editKeep", this.updatedKeep);
+      this.$store.dispatch("removeKeepFromVault", foundVaultKeep.id);
+      this.$router.push("/vault/" + this.$store.state.activeVault.id);
+    }
+  },
+  destroyed() {
+    this.$store.activeVaultKeep = {};
+  },
   components: { KeepDetails }
 };
 </script>

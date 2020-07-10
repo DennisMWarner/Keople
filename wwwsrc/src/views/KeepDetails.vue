@@ -142,21 +142,6 @@ export default {
         "vaultKeepsFilteredByActiveKeep: ",
         this.$store.state.vaultKeepsFilteredByActiveKeep
       );
-    },
-    removeKeepFromVault() {
-      this.$store.dispatch("getAllVaultKeeps");
-      this.updatedKeep.keeps = --this.keep.keeps;
-      console.log("keeps count: ", this.keep.keeps, this.updatedKeep);
-      this.updatedKeep.id = this.keep.id;
-
-      let foundVaultKeep = this.$store.state.allVaultKeeps.find(
-        vk =>
-          vk.vaultId == this.$store.state.activeVault.id &&
-          vk.keepId == this.$store.state.activeKeep.id
-      );
-      this.$store.dispatch("editKeep", this.updatedKeep);
-      this.$store.dispatch("removeKeepFromVault", foundVaultKeep.id);
-      this.$router.push("/vault/" + this.$store.state.activeVault.id);
     }
   },
   components: { keep, vaultSelectButtonGroupColumn },

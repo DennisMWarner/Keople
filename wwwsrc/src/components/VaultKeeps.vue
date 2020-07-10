@@ -1,7 +1,9 @@
 <template>
-  <div class="vault-keeps bg-primary">
-    <div class>
-      <vault-keep v-for="vaultKeep in vaultKeeps" :vaultKeepData="vaultKeep" :key="vaultKeep.id"></vault-keep>
+  <div class="vault-keeps row mt-2">
+    <div class="col-md-12 bg-primary">
+      <div class="card-columns">
+        <vault-keep v-for="vaultKeep in vaultKeeps" :vaultKeepData="vaultKeep" :key="vaultKeep.id"></vault-keep>
+      </div>
     </div>
   </div>
 </template>
