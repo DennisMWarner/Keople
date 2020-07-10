@@ -22,6 +22,7 @@ export default {
   methods: {
     saveKeepToVault() {
       this.updatedKeep.keeps = ++this.$store.state.activeKeep.keeps;
+      this.updatedKeep.views = this.$store.state.activeKeep.views;
       this.updatedKeep.id = this.$store.state.activeKeep.id;
       this.$store.dispatch("editKeep", this.updatedKeep);
       console.log("updatedKeep in saveKeepToVault(): ", this.updatedKeep);
