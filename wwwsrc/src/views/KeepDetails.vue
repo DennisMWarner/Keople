@@ -24,8 +24,40 @@
       <div class="text-center mt-1">
         <button
           class="btn btn-light text-white rounded border shadow w-50 bg-danger"
-          @click="deleteKeep()"
+          data-target="#delete-keep-modal"
+          data-toggle="modal"
         >Delete</button>
+      </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="delete-keep-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Delete "{{this.keep.name}}"?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Modal Are you sure you want to delete "{{this.keep.name}}"?
+              <br />(This cannot be undone.)
+            </p>
+          </div>
+          <div class="modal-footer bg-primary">
+            <button
+              type="button"
+              class="btn btn-success border border-white rounded shadow"
+              data-dismiss="modal"
+            >Cancel</button>
+            <button
+              type="button"
+              class="btn btn-danger text-white border border-white shadow rounded"
+              @click="deleteKeep()"
+              data-dismiss="modal"
+            >Delete "{{this.keep.name}}".</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -85,17 +117,20 @@
               class="modal-title"
               id="exampleModalLabel"
             >Please select a vault to save this keep to:</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
-          <div class="modal-body text-center">
+          <div class="modal-body text-center bg-success">
             <div class="btn-group text-center" role="group" aria-label="Basic example">
               <vault-select-button-group-column />
             </div>
           </div>
-          <div class="modal-footer bg-secondary border border-light rounded shadow">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <div
+            class="modal-footer bg-primary border border-light rounded shadow justify-content-center"
+          >
+            <button
+              type="button"
+              class="btn btn-danger border border-white rounded shadow"
+              data-dismiss="modal"
+            >Cancel</button>
             <!-- <button type="button" class="btn btn-primary">Save Keep</button> -->
           </div>
         </div>
@@ -121,8 +156,9 @@ export default {
     }
   },
   methods: {
-    deleteKeep() {
-      return this.$store.dispatch("deleteKeep", this.keep.id);
+    async deleteKeep() {
+      await this.$store.dispatch("deleteKeep", this.keep.id);
+      this.$router.push("/myKeeps");
     },
     async SetValidVaults() {
       await this.$store.dispatch("getAllVaultKeeps");

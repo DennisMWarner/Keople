@@ -41,7 +41,7 @@
           <span class="navbar-text mr-2">
             <span
               v-if="$auth.isAuthenticated"
-              class="bg-primary border border-dark text-light rounded shadow px-2 pb-1 mr-2 ml-1"
+              class="bg-primary border border-dark text-light rounded shadow px-2 py-1 mr-2 ml-1"
             >{{userInfo.user.name}}</span>
             <button
               class="btn btn-sm btn-primary border border-secondary rounded shadow"
@@ -96,5 +96,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="create-vault">
     <button
-      class="btn btn-block btn-success p1 border border-dark shadow rounded"
+      class="btn btn-block btn-primary p1 border border-white shadow rounded"
       data-target="#create-vault-modal"
       data-toggle="modal"
     >New Vault</button>

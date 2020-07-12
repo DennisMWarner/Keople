@@ -18,28 +18,21 @@
     </div>
     <div class="modal" tabindex="-1" role="dialog" id="delete-vault-modal">
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
+        <div class="modal-content border border-white">
+          <div class="modal-header bg-primary text-white border border-white">
             <h5 class="modal-title">Delete "{{this.vault.name}}"?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-success text-white">
             <p>
-              Modal Are you sure you want to delete this vault?
+              Are you sure you want to delete this vault?
               <br />This cannot be undone!
             </p>
           </div>
-          <div class="modal-footer bg-primary">
+          <div class="modal-footer bg-primary border border-white">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
             <button
               type="button"
-              class="btn btn-success border border white"
-              data-dismiss="modal"
-            >Cancel</button>
-            <button
-              type="button"
-              class="btn btn-danger text-info border border-info"
+              class="btn btn-danger text-white border border-white rounded shadow"
               @click="deleteVault()"
               data-dismiss="modal"
             >Delete "{{this.vault.name}}"</button>

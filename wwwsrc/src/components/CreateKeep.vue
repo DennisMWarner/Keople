@@ -15,11 +15,11 @@
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <div class="modal-content border border-secondary rounded shadow">
-          <div class="modal-header bg-primary text-light border rounded shadow-sm border-light">
+        <div class="modal-content border border-white rounded shadow">
+          <div class="modal-header bg-primary text-light border rounded shadow-sm border-white">
             <h5 class="modal-title" id="exampleModalLabel">Create a new keep</h5>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-success">
             <form>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Title" v-model="newKeep.name" />
@@ -49,7 +49,7 @@
                   v-model="newKeep.isPrivate"
                 />
                 <label
-                  class="form-check-label mr-4"
+                  class="form-check-label mr-4 text-white"
                   for="exampleCheck1"
                 >Private (required if you want to delete keep in the future)</label>
                 <!-- <span class="ml-4">
@@ -59,10 +59,10 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer bg-primary border border-light rounded shadow">
+          <div class="modal-footer bg-primary border border-white rounded shadow">
             <button
               type="button"
-              class="btn btn-success border rounded shadow border-white"
+              class="btn btn-primary border rounded shadow"
               data-dismiss="modal"
             >Cancel</button>
             <button
